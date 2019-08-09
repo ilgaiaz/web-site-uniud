@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "university";
-$password = "password";
+$password = "";
 $db = "applicazioni_web";
 
 // Create connection

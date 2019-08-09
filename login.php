@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Quote request</title>
-        <meta name="description" content="Make a request to a server for quotes"/>
+        <title>Login Page</title>
+        <meta name="description" content="Login to your profile"/>
         <meta name="author" content="Michele Gaiarin"/>
         <link rel="icon" href="images/icon.png"/>
-        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
         <script type="text/javascript" src="script.js"></script>
         <script
         src="https://code.jquery.com/jquery-3.4.0.js"
@@ -23,11 +23,11 @@
     </head>
     <body>
         <!--Navbar show -->
-        <div id="nav-placeholder">
+        <div class="container fixed-top" id="nav-placeholder">
         </div>
         <script>
             $(function(){
-            $("#nav-placeholder").load("navbar.php");
+            $("#nav-placeholder").load("includes/navbar.php");
             });
         </script>
         <!-- End Navbar -->
@@ -35,11 +35,11 @@
             session_start();
             if(isset($_POST["username"]) && isset($_POST["password"])) {
                 require_once('config/mysql.php');
-                $pass = md5($POST["password"]);
+                $pass = md5($_POST["password"]);
                 $result = $conn->query("SELECT * FROM user_data WHERE user='".$_POST["username"]."' AND password='".$pass."';");
                 if ($result->num_rows) {
                     $_SESSION["username"] = $_POST["username"];
-                    header("Location: index.php");
+                    header("Location: index.html");
                 } else { 
                 //if there are't that data in DB show an error message
                 ?>
