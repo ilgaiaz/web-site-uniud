@@ -1,14 +1,16 @@
 <?php
-$servername = "localhost";
-$username = "university";
-$password = "";
-$db = "applicazioni_web";
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+# This function reads your DATABASE_URL configuration automatically set by Heroku
+# the return value is a string that will work with pg_connect
+function pg_connection_string() {
+  return "dbname=abcdefg host=heroku_1c6bc9375739b50 port=5432 user=b6df9263765a9a password=13c81934 sslmode=require";
 }
+ 
+# Establish db connection
+$db = pg_connect(pg_connection_string());
+if (!$db) {
+    echo "Database connection error."
+    exit;
+}
+ 
+$result = pg_query($db, "SELECT statement goes here");
 ?>
