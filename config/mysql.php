@@ -6,11 +6,11 @@ function pg_connection_string() {
 }
  
 # Establish db connection
-$db = pg_connect(pg_connection_string());
-if (!$db) {
+$conn = pg_connect(pg_connection_string());
+if (!$conn) {
     echo "Database connection error."
     exit;
 }
  
-$result = pg_query($db, "SELECT statement goes here");
+$result = pg_query($conn, "SELECT statement goes here");
 ?>
