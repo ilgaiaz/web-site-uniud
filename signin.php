@@ -24,7 +24,7 @@
     </head>
     <body>
         <!--Navbar show -->
-        <div class="container fixed-top" id="nav-placeholder">
+        <div class="container" id="nav-placeholder">
         </div>
         <script>
             $(function(){

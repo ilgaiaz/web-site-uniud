@@ -24,7 +24,7 @@
     </head>
     <body>
         <!--Navbar show -->
-        <div class="container fixed-top" id="nav-placeholder">
+        <div class="container" id="nav-placeholder">
         </div>
         <script>
             $(function(){
@@ -56,7 +56,7 @@
         <div class="container">
 	        <div class="jumbotron">
                 <div id="container-login" class="form-container container">
-                    <div class="col-sm">
+                    <div >
                         <h2>Inserire i dati:</h2>
                     </div>
                     <!-- Error message if data is wrong -->
