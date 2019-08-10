@@ -53,40 +53,44 @@
                 }
             }   
         ?>
-        <div id="container-login" class="form-container container">
-            <div class="col-sm">
-                <h2>Inserire i dati:</h2>
-            </div>
-            <!-- Error message if data is wrong -->
-            <div id="login-error" class="error-warning col-sm">
-            </div>
-            <!-- ******** -->
-            <form id="form-login" class="form-horizontal was-validated" action="login.php" method="POST">
-                <div class="form-group">
-                    <label class="control-label col-sm" for="uname">Username</label>
+        <div class="container">
+	        <div class="jumbotron">
+                <div id="container-login" class="form-container container">
                     <div class="col-sm">
-                        <input type="text" class="form-control" id="uname" placeholder="Inserire username" name="username" value="" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Per favore compila il campo.</div>
+                        <h2>Inserire i dati:</h2>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm" for="pwd">Password</label>
-                    <div class="col-sm">
-                        <!-- 
-                        <input type="password" class="form-control" id="pwd" placeholder="Inserire password" name="pswd" required>
-                         -->
-                        <input type="password" class="form-control" id="psw" placeholder="Inserire password" name="password" value="" required>
-                        <div class="valid-feedback">Valid.</div>
-                        <div class="invalid-feedback">Per favore compila il campo.</div>
+                    <!-- Error message if data is wrong -->
+                    <div id="login-error" class="error-warning col-sm">
                     </div>
+                    <!-- ******** -->
+                    <form id="form-login" class="form-horizontal was-validated" action="login.php" method="POST">
+                        <div class="form-group">
+                            <label class="control-label col-sm" for="uname">Username</label>
+                            <div class="col-sm">
+                                <input type="text" class="form-control" id="uname" placeholder="Inserire username" name="username" value="" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Per favore compila il campo.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-sm" for="pwd">Password</label>
+                            <div class="col-sm">
+                                <!-- 
+                                <input type="password" class="form-control" id="pwd" placeholder="Inserire password" name="pswd" required>
+                                -->
+                                <input type="password" class="form-control" id="psw" placeholder="Inserire password" name="password" value="" required>
+                                <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Per favore compila il campo.</div>
+                            </div>
+                        </div>
+                        <div class="form-group">        
+                            <div class="col-sm-offset-2 col-sm">
+                                <input type="submit" class="btn btn-primary" name="button" value="Accedi">
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">        
-                    <div class="col-sm-offset-2 col-sm">
-                        <input type="submit" class="btn btn-primary" name="button" value="Accedi">
-                    </div>
-                </div>
-            </form>
+            </div>
         </div>
     </body>
 </html>

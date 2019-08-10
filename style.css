@@ -18,13 +18,13 @@
 
 /*Login form */
 .form-container input[type=text], input[type=password], input[type=date], input[type=email]{
-  width: 40%;
+  max-width: 400px;
   margin-right: auto;
   margin-left: auto;
 }
 
 .form-container input[type=submit]{
-  width: 10%;
+  max-width: 400px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -33,7 +33,7 @@
   align-content: center;
   align-items: center;
   text-align: center;
-  width: 40%;
+  max-width: 400px;
   margin: 7% auto;
   float: none;
   
