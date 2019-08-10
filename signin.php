@@ -1,11 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Final project</title>
-        <meta name="description" content="Waeb application final project"/>
+        <title>Sign Up Page</title>
+        <meta name="description" content="Web application final project"/>
         <meta name="author" content="Michele Gaiarin"/>
         <link rel="icon" href="images/icon.png"/>
-        <link rel="stylesheet" type="text/css" href="mystyle.css"/>
+        <link rel="stylesheet" type="text/css" href="style.css"/>
         <script
             src="https://code.jquery.com/jquery-3.4.0.js"
             integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
@@ -23,11 +23,11 @@
     </head>
     <body>
         <!--Navbar show -->
-        <div id="nav-placeholder">
+        <div class="container fixed-top" id="nav-placeholder">
         </div>
         <script>
             $(function(){
-                $("#nav-placeholder").load("navbar.php");
+                $("#nav-placeholder").load("includes/navbar.php");
             });
         </script>
         <!-- End Navbar -->
@@ -42,7 +42,7 @@
                     //if there is already that username show error message otherside save data
                     if (!$result->num_rows >= 1) {
                         require_once("services/insert.php");
-                        header("Location: index.php");
+                        header("Location: index.html");
                     } else {
                         ?>
                             <script>

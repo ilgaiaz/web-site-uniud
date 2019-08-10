@@ -1,0 +1,55 @@
+body{
+	padding-top: 80px;
+	padding-bottom: 80px;
+}
+
+.carousel-inner {
+	height: 300px;
+}
+
+
+
+/* Navbar logo position and dimension*/
+#logo {
+  width: 60px;
+  height: auto;
+  border-radius: 200px;
+  background-color: white;
+}
+/* nav bar setup */
+.ml-auto .dropdown-menu {
+  left: auto !important;
+  right: 0px;
+}
+
+.mr-auto{
+  right: auto !important;
+  left: 0px;
+}
+
+/*Login form */
+.form-container input[type=text], input[type=password], input[type=date], input[type=email]{
+  width: 40%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.form-container input[type=submit]{
+  width: 10%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.form-container{
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  width: 40%;
+  margin: 7% auto;
+  float: none;
+  
+}
+
+.error-warning p{
+  color: #b22222;
+}
