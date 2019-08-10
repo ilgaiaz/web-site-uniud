@@ -4,6 +4,7 @@
         <title>Login Page</title>
         <meta name="description" content="Login to your profile"/>
         <meta name="author" content="Michele Gaiarin"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
         <link rel="icon" href="images/icon.png"/>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <script type="text/javascript" src="script.js"></script>

@@ -4,6 +4,7 @@
         <title>Sign Up Page</title>
         <meta name="description" content="Web application final project"/>
         <meta name="author" content="Michele Gaiarin"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
         <link rel="icon" href="images/icon.png"/>
         <link rel="stylesheet" type="text/css" href="style.css"/>
         <script
