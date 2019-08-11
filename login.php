@@ -40,6 +40,7 @@
                 $result = $conn->query("SELECT * FROM user_data WHERE user='".$_POST["username"]."' AND password='".$pass."';");
                 if ($result->num_rows) {
                     $_SESSION["username"] = $_POST["username"];
+                    $_SESSION["logged_in"] = TRUE;
                     header("Location: index.html");
                 } else { 
                 //if there are't that data in DB show an error message
@@ -88,6 +89,7 @@
                                 <input type="submit" class="btn btn-primary" name="button" value="Accedi">
                             </div>
                         </div>
+                        <a href="reset_pw.php" >Password dimenticata?</a>
                     </form>
                 </div>
             </div>
