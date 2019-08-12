@@ -77,6 +77,7 @@
                                     <div id="message"></div>
                                  </div>
                               </div>
+                              <input type="hidden" name="email" value="<?php echo $email;?>"/>
                               <div class="form-group">        
                                  <div class="col-sm-offset-2 col-sm">
                                     <input id="submit-signin" type="submit" class="btn btn-primary" name="reset" value="Reset">
@@ -100,9 +101,7 @@
                   <div class="jumbotron">
                      <div class="form-container">
                         <div class="col-sm">
-                           <div class="alert alert-error">
-                              <?php $error ?>
-                           </div>  
+                           <div class="alert alert-error"><?=$error ?></div>  
                         </div>
                      </div>
                   </div>
