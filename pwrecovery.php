@@ -38,19 +38,14 @@
          if(!empty($_POST["reset"])){
             require_once('config/mysql.php');
             $pass = md5($_POST["password"]);
-            if($_SESSION["logged_in"]===TRUE){
-               $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE user ='".$_SESSION["username"]."';";
-            } 
-            else { 
-               $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE user ='".$_SESSION["username"]."'AND email ='".$_SESSION["email"]."';";
-            }
+            $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE user ='".$_SESSION["username"]."';";
             mysqli_query($conn,$query);
             header("Location: pwreset_success.html");
          }
       ?>
       <div class="container"> 
          <div class="jumbotron">
-            <div id="container-login" class="form-container container">   
+            <div id="container-resetpw" class="form-container container">   
                <form id="form-resetpw" class = "form-horizontal was-validated" action="pwrecovery.php" method = "post"
                      oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "La password non combacia" : "")'>
                   <div class="col-sm">
