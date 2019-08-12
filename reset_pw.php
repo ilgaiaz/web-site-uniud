@@ -101,6 +101,10 @@
                echo "<div class='error'>
                <p>An email has been sent to you with instructions on how to reset your password.</p>
                </div><br /><br /><br />";
+
+               echo $response->statusCode();
+               echo $response->body();
+               echo $response->headers();
             }
          }else{
       ?>
