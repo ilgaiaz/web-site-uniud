@@ -61,7 +61,7 @@
                      <div class="form-container">
                         <div class="col-sm">
                            <div class="alert alert-error">
-                              <p> <?=$error ?></p>
+                              <p> <?=$error; ?></p>
                               <br><a href='javascript:history.go(-1)'>Torna indietro</a>
                            </div>  
                         </div>
