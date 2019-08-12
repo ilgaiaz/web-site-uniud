@@ -55,8 +55,20 @@
                }
             }
             if($error!=""){
-               echo "<div class='error'>".$error."</div>
-               <br /><a href='javascript:history.go(-1)'>Go Back</a>";
+            ?>
+               <div id="container-resetpw" class=" container">
+                  <div class="jumbotron">
+                     <div class="form-container">
+                        <div class="col-sm">
+                           <div class="alert alert-success">
+                              <p> <?php $error ?></p>
+                              <br><a href='javascript:history.go(-1)'>Go Back</a>";
+                           </div>  
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            <?php
             }else{
                $expFormat = mktime(
                date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y"));
@@ -89,7 +101,7 @@
                $subject = "Password Recovery";
                $from = new SendGrid\Email(null, "app142461076@heroku.com");
                $to = new SendGrid\Email(null, $email);
-               $content = new SendGrid\Content("text/plain", $output);
+               $content = new SendGrid\Content("text/html", $output);
                $mail = new SendGrid\Mail($from, $subject, $to, $content);
                
                $apiKey = getenv('SENDGRID_API_KEY');
@@ -100,37 +112,51 @@
                   echo $response->body();
                   echo $response->headers();
                } finally {
-                  echo "<div class='error'>
-                  <p>An email has been sent to you with instructions on how to reset your password.</p>
-                  </div><br /><br /><br />";
+               ?>
+                  <div id="container-resetpw" class=" container">
+                     <div class="jumbotron">
+                        <div class="form-container">
+                           <div class="col-sm">
+                              <div class="alert alert-success">
+                                 <p>An email has been sent to you with instructions on how to reset your password.</p>
+                              </div>  
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               <?php
                }
             }
          }else{
       ?>
-            <div id="container-resetpw" class="form-container container">
-               <div id="login-error" class="error-warning col-sm">
+            <div class="container">
+	            <div class="jumbotron">
+                  <div id="container-resetpw" class="form-container container">
+                     <div id="login-error" class="error-warning col-sm">
+                     </div>
+                     <form id="form-resetpw" class = "form-horizontal was-validated" action="reset_pw.php" method = "post">
+                        <div class="col-sm">
+                           <h2>Inserire credenziali:</h2>
+                        </div>
+                        <div class="form-group">
+                           <label class="control-label col-sm" for="email">E-mail</label>
+                           <div class="col-sm">
+                              <!-- 
+                              <input type="password" class="form-control" id="pwd" placeholder="Inserire password" name="pswd" required>
+                              -->
+                              <input type="email" class="form-control" id="email" placeholder="Inserire E-mail" name="email" value="" required>
+                              <div class="valid-feedback">Valida.</div>
+                              <div class="invalid-feedback">Per favore compila il campo.</div>
+                           </div>
+                        </div>
+                        <div class="form-group">        
+                           <div class="col-sm-offset-2 col-sm">
+                              <input type="submit" class="btn btn-primary" name="passbtn" id="passbtn" value="Invia">
+                           </div>
+                        </div>
+                     </form>  
+                  </div>
                </div>
-               <form id="form-resetpw" class = "form-horizontal was-validated" action="reset_pw.php" method = "post">
-                  <div class="col-sm">
-                     <h2>Inserire credenziali:</h2>
-                  </div>
-                  <div class="form-group">
-                     <label class="control-label col-sm" for="email">E-mail</label>
-                     <div class="col-sm">
-                        <!-- 
-                        <input type="password" class="form-control" id="pwd" placeholder="Inserire password" name="pswd" required>
-                        -->
-                        <input type="email" class="form-control" id="email" placeholder="Inserire E-mail" name="email" value="" required>
-                        <div class="valid-feedback">Valida.</div>
-                        <div class="invalid-feedback">Per favore compila il campo.</div>
-                     </div>
-                  </div>
-                  <div class="form-group">        
-                     <div class="col-sm-offset-2 col-sm">
-                        <input type="submit" class="btn btn-primary" name="passbtn" id="passbtn" value="Invia">
-                     </div>
-                  </div>
-               </form>  
             </div> 
       <?php } ?>  
    </body>
