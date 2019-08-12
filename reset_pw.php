@@ -45,13 +45,13 @@
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);
             $email = filter_var($email, FILTER_VALIDATE_EMAIL);
             if (!$email) {
-               $error .="<p>Invalid email address please type a valid email address!</p>";
+               $error .="<p>Mail non valida, per favore reinseriscila!</p>";
             }else{
                $sel_query = "SELECT * FROM `user_data` WHERE email='".$email."'";
                $results = mysqli_query($conn,$sel_query);
                $row = mysqli_num_rows($results);
                if ($row==""){
-                  $error .= "<p>No user is registered with this email address!</p>";
+                  $error .= "<p>Nessun  utente registrato con questa mail</p>";
                }
             }
             if($error!=""){
@@ -62,7 +62,7 @@
                         <div class="col-sm">
                            <div class="alert alert-error">
                               <p> <?=$error ?></p>
-                              <br><a href='javascript:history.go(-1)'>Torna indietro</a>";
+                              <br><a href='javascript:history.go(-1)'>Torna indietro</a>
                            </div>  
                         </div>
                      </div>
