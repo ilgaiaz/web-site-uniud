@@ -117,7 +117,7 @@
             mysqli_query($conn,$query);
             $remove = "DELETE password_reset_temp WHERE email ='".$email."';";
             mysqli_query($conn,$remove);
-            header("Location: pwreset_success.html");
+            //header("Location: pwreset_success.html");
          }
       ?>
    </body>
