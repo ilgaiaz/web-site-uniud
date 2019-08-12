@@ -37,68 +37,98 @@
       <!-- End Navbar -->
       <!--   PHP script password recovery-->
       <?php
-      
-      session_start();
-      
-      if(!empty($_POST["passbtn"]))
-      {
+         require 'vendor/autoload.php';
+         session_start();
          require_once('config/mysql.php');
-         
-         $query = "SELECT * from user_data WHERE user = '".$_POST["username"]."' AND email = '".$_POST["email"]."'; ";
-         $result = mysqli_query($conn,$query);
-         $user = mysqli_fetch_array($result);
-         
-         if(!empty($user))  //check if user is in database
-         {
-            $_SESSION["username"] = $_POST["username"];
-            $_SESSION["email"] = $_POST["email"];
-            header("Location: pwrecovery.php");
-         }
-         else
-         {
-         ?> <script>
-               $(function(){
-                  $("#login-error").append("<p>Utente non presente nel database</p>");
-               });
-            </script>
-         <?php
-         }   
-      }
-      
+         if(isset($_POST["email"]) && (!empty($_POST["email"]))){
+            $email = $_POST["email"];
+            $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+            $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+            if (!$email) {
+               $error .="<p>Invalid email address please type a valid email address!</p>";
+            }else{
+               $sel_query = "SELECT * FROM `users` WHERE email='".$email."'";
+               $results = $conn->query($sel_query);
+               $row = mysqli_num_rows($results);
+               if ($row==""){
+                  $error .= "<p>No user is registered with this email address!</p>";
+               }
+            }
+            if($error!=""){
+               echo "<div class='error'>".$error."</div>
+               <br /><a href='javascript:history.go(-1)'>Go Back</a>";
+            }else{
+               $expFormat = mktime(
+               date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y"));
+
+               /*Create the  email's message and save into db*/
+               $expDate = date("Y-m-d H:i:s",$expFormat);
+               $key = md5(2418*2+$email);
+               $addKey = substr(md5(uniqid(rand(),1)),3,10);
+               $key = $key . $addKey;
+               // Insert Temp Table
+               $conn->query("INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`) 
+                  VALUES ('".$email."', '".$key."', '".$expDate."');");
+               
+               $output='<p>Dear user,</p>';
+               $output.='<p>Please click on the following link to reset your password.</p>';
+               $output.='<p>-------------------------------------------------------------</p>';
+               $output.='<p><a href="http://localhost/web-site-uniud/reset-pw.php?
+               key='.$key.'&email='.$email.'&action=reset" target="_blank"></a></p>'; 
+               $output.='<p>-------------------------------------------------------------</p>';
+               $output.='<p>Please be sure to copy the entire link into your browser.
+               The link will expire after 1 day for security reason.</p>';
+               $output.='<p>If you did not request this forgotten password email, no action 
+               is needed, your password will not be reset. However, you may want to log into 
+               your account and change your security password as someone may have guessed it.</p>';   
+               $output.='<p>Thanks,</p>';
+               $output.='<p>Uniud Team</p>';
+               
+               $body = $output; 
+               $subject = "Password Recovery";
+               //Email's data
+               $from = new SendGrid\Email(null, "app142461076@heroku.com");
+               $subject = $output;
+               $to = new SendGrid\Email(null, $email);
+               $content = new SendGrid\Content("text/plain", "Hello, Email!");
+               $mail = new SendGrid\Mail($from, $subject, $to, $content);
+               
+               $apiKey = getenv('SENDGRID_API_KEY');
+               $sg = new \SendGrid($apiKey);
+
+               $response = $sg->client->mail()->send()->post($mail);
+               
+               echo "<div class='error'>
+               <p>An email has been sent to you with instructions on how to reset your password.</p>
+               </div><br /><br /><br />";
+            }
+         }else{
       ?>
-      <div id="container-resetpw" class="form-container container">
-         <div id="login-error" class="error-warning col-sm">
-         </div>
-         <form id="form-resetpw" class = "form-horizontal was-validated" action="reset_pw.php" method = "post">
-            <div class="col-sm">
-               <h2>Inserire credenziali:</h2>
-            </div>
-            
-            <div class="form-group">
-               <label class="control-label col-sm" for="uname">Username</label>
-               <div class="col-sm">
-                  <input type="text" class="form-control" id="uname" placeholder="Inserire username" name="username" value="" required>
-                     <div class="valid-feedback">Valido.</div>
-                     <div class="invalid-feedback">Per favore compila il campo.</div>
+            <div id="container-resetpw" class="form-container container">
+               <div id="login-error" class="error-warning col-sm">
                </div>
-            </div>
-            <div class="form-group">
-               <label class="control-label col-sm" for="email">E-mail</label>
-               <div class="col-sm">
-                  <!-- 
-                  <input type="password" class="form-control" id="pwd" placeholder="Inserire password" name="pswd" required>
-                  -->
-                  <input type="email" class="form-control" id="email" placeholder="Inserire E-mail" name="email" value="" required>
-                  <div class="valid-feedback">Valida.</div>
-                  <div class="invalid-feedback">Per favore compila il campo.</div>
-               </div>
-            </div>
-            <div class="form-group">        
-               <div class="col-sm-offset-2 col-sm">
-                  <input type="submit" class="btn btn-primary" name="passbtn" id="passbtn" value="Invia">
-               </div>
-            </div>
-         </form>  
-      </div>   
+               <form id="form-resetpw" class = "form-horizontal was-validated" action="reset_pw.php" method = "post">
+                  <div class="col-sm">
+                     <h2>Inserire credenziali:</h2>
+                  </div>
+                  <div class="form-group">
+                     <label class="control-label col-sm" for="email">E-mail</label>
+                     <div class="col-sm">
+                        <!-- 
+                        <input type="password" class="form-control" id="pwd" placeholder="Inserire password" name="pswd" required>
+                        -->
+                        <input type="email" class="form-control" id="email" placeholder="Inserire E-mail" name="email" value="" required>
+                        <div class="valid-feedback">Valida.</div>
+                        <div class="invalid-feedback">Per favore compila il campo.</div>
+                     </div>
+                  </div>
+                  <div class="form-group">        
+                     <div class="col-sm-offset-2 col-sm">
+                        <input type="submit" class="btn btn-primary" name="passbtn" id="passbtn" value="Invia">
+                     </div>
+                  </div>
+               </form>  
+            </div> 
+      <?php } ?>  
    </body>
 </html>
