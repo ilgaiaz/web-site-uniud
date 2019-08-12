@@ -87,7 +87,7 @@
                //Email's data
                $body = $output; 
                $subject = "Password Recovery";
-               $from = new SendGrid\Email(null, "michele.gaiarin@gmail.com");
+               $from = new SendGrid\Email(null, "app142461076@heroku.com");
                $to = new SendGrid\Email(null, $email);
                $content = new SendGrid\Content("text/plain", $output);
                $mail = new SendGrid\Mail($from, $subject, $to, $content);
