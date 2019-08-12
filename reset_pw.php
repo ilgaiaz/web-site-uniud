@@ -49,8 +49,8 @@
             }else{
                $sel_query = "SELECT * FROM `users` WHERE email='".$email."'";
                $results = $conn->query($sel_query);
-               $row = mysqli_num_rows($results);
-               if ($row==""){
+               $row = $conn->query("SELECT * FROM user_data WHERE email='".$_POST["email"]."';");
+               if (!$row>=1){
                   $error .= "<p>No user is registered with this email address!</p>";
                }
             }
