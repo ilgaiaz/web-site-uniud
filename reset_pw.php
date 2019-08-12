@@ -47,10 +47,10 @@
             if (!$email) {
                $error .="<p>Invalid email address please type a valid email address!</p>";
             }else{
-               $sel_query = "SELECT * FROM `users` WHERE email='".$email."'";
-               $results = $conn->query($sel_query);
-               $row = $conn->query("SELECT * FROM user_data WHERE email='".$_POST["email"]."';");
-               if (!$row>=1){
+               $sel_query = "SELECT * FROM `user_data` WHERE email='".$email."'";
+               $results = mysqli_query($conn,$sel_query);
+               $row = mysqli_num_rows($results);
+               if ($row==""){
                   $error .= "<p>No user is registered with this email address!</p>";
                }
             }
@@ -60,7 +60,7 @@
                   <div class="jumbotron">
                      <div class="form-container">
                         <div class="col-sm">
-                           <div class="alert alert-success">
+                           <div class="alert alert-error">
                               <p> <?php $error ?></p>
                               <br><a href='javascript:history.go(-1)'>Go Back</a>";
                            </div>  
@@ -120,7 +120,7 @@
                         <div class="form-container">
                            <div class="col-sm">
                               <div class="alert alert-success">
-                                 <p>An email has been sent to you with instructions on how to reset your password.</p>
+                                 <p>Una mail è stata inviata al tuo indirizzo con un link per aggiornare la password</p>
                               </div>  
                            </div>
                         </div>
