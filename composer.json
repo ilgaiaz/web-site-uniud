@@ -1,0 +1,14 @@
+{
+    "name": "mma/appweb",
+    "description": "composer for using app on heroku",
+    "type": "project",
+    "authors": [
+        {
+            "name": "michele",
+            "email": "michele.gaiarin@gmail.com"
+        }
+    ],
+    "require": {
+        "sendgrid/sendgrid": "~5.0.9"
+    }
+}
