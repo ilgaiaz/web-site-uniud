@@ -85,8 +85,10 @@
                $output='<p>Dear user,</p>';
                $output.='<p>Please click on the following link to reset your password.</p>';
                $output.='<p>-------------------------------------------------------------</p>';
-               $output.='<p><a href="http://localhost/web-site-uniud/reset-pw.php?
-               key='.$key.'&email='.$email.'&action=reset" target="_blank"></a></p>'; 
+               $output.='<p><a href="https://web-application-uniud.herokuapp.com/pwrecovery.php?
+               key='.$key.'&email='.$email.'&action=reset" target="_blank">
+               https://web-application-uniud.herokuapp.com/pwrecovery.php
+               ?key='.$key.'&email='.$email.'&action=reset</a></p>';
                $output.='<p>-------------------------------------------------------------</p>';
                $output.='<p>Please be sure to copy the entire link into your browser.
                The link will expire after 1 day for security reason.</p>';
@@ -108,9 +110,9 @@
                $sg = new \SendGrid($apiKey);
                try {
                   $response = $sg->client->mail()->send()->post($mail);
-                  echo $response->statusCode();
+                  /*echo $response->statusCode();
                   echo $response->body();
-                  echo $response->headers();
+                  echo $response->headers();*/
                } finally {
                ?>
                   <div id="container-resetpw" class=" container">
