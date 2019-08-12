@@ -83,28 +83,27 @@
                your account and change your security password as someone may have guessed it.</p>';   
                $output.='<p>Thanks,</p>';
                $output.='<p>Uniud Team</p>';
-               
+            
+               //Email's data
                $body = $output; 
                $subject = "Password Recovery";
-               //Email's data
-               $from = new SendGrid\Email(null, "app142461076@heroku.com");
-               $subject = $output;
+               $from = new SendGrid\Email(null, "michele.gaiarin@gmail.com");
                $to = new SendGrid\Email(null, $email);
-               $content = new SendGrid\Content("text/plain", "Hello, Email!");
+               $content = new SendGrid\Content("text/plain", $output);
                $mail = new SendGrid\Mail($from, $subject, $to, $content);
                
                $apiKey = getenv('SENDGRID_API_KEY');
                $sg = new \SendGrid($apiKey);
-
-               $response = $sg->client->mail()->send()->post($mail);
-               
-               echo "<div class='error'>
-               <p>An email has been sent to you with instructions on how to reset your password.</p>
-               </div><br /><br /><br />";
-
-               echo $response->statusCode();
-               echo $response->body();
-               echo $response->headers();
+               try {
+                  $response = $sg->client->mail()->send()->post($mail);
+                  echo $response->statusCode();
+                  echo $response->body();
+                  echo $response->headers();
+               } finally {
+                  echo "<div class='error'>
+                  <p>An email has been sent to you with instructions on how to reset your password.</p>
+                  </div><br /><br /><br />";
+               }
             }
          }else{
       ?>
