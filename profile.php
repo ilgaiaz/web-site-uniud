@@ -41,7 +41,7 @@
                     <div class="col-sm">
                         <?php
                             session_start();
-                            require_once('config/mysql.php');
+                            require_once('services/get.php');
                         ?>
                     </div>
                 </div>
