@@ -113,7 +113,7 @@
                $pass = md5($_POST["password"]);
                $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE email ='".$_POST["email"]."';";
                mysqli_query($conn,$query);
-               $remove = "DELETE password_reset_temp WHERE email ='".$email."';";
+               $remove = "DELETE password_reset_temp WHERE email ='".$_POST["email"]."';";
                mysqli_query($conn,$remove);
                header("Location: pwreset_success.html");
             }
