@@ -42,6 +42,7 @@
             $email = $_GET["email"];
             $curDate = date("Y-m-d H:i:s");
             $query = $conn->query("SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';");
+            echo "Query: ".$query;
             if (!$query>=1){
                $error .= '<h2>Invalid Link</h2>
                <p>The link is invalid/expired. Either you did not copy the correct link from the email, or you have already used the key in which case it is 
@@ -49,7 +50,6 @@
             }else{
                $row = mysqli_fetch_assoc($query);
                $expDate = $row['expDate'];
-               echo "EXP DATE: ".$expDate."CURRENT: ".$curDate;
                if ($expDate >= $curDate){
       ?>
                   <div class="container"> 
