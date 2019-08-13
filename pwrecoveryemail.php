@@ -41,8 +41,16 @@
             $key = $_GET["key"];
             $email = $_GET["email"];
             $curDate = date("Y-m-d H:i:s");
-            $query = $conn->query("SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';");
-            echo "Query: ".$query;
+            $sql = "SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';";
+            /*add controll for query */
+            if (!$mysqli->query("SET @a:='this will not work'")) {
+               printf("Error: %s\n", $mysqli->error);
+               die();
+             }
+             
+             $query = mysqli_query($sql);
+             var_dump($query);
+             /*end of control */
             if (!$query>=1){
                $error .= '<h2>Invalid Link</h2>
                <p>The link is invalid/expired. Either you did not copy the correct link from the email, or you have already used the key in which case it is 
