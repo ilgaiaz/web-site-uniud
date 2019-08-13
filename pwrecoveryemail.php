@@ -111,7 +111,7 @@
          }
 
          if(isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"]=="update")){
-            echo "DENTRO STO IF";
+            echo $email;
             $pass = md5($_POST["password"]);
             $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE email ='".$email."';";
             mysqli_query($conn,$query);
