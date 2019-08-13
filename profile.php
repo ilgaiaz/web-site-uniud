@@ -37,14 +37,11 @@
 
       <div id="container-resetpw" class=" container">
             <div class="jumbotron">
-                <div class="form-container">
-                    <div class="col-sm">
-                        <?php
-                            session_start();
-                            require_once('services/get.php');
-                        ?>
-                    </div>
-                </div>
+               <h2>Dati personali</h2>
+               <?php
+                  session_start();
+                  require_once('services/get.php');
+               ?>   
             </div>
         </div>
       <!-- End Navbar -->
