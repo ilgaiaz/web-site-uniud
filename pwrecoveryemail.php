@@ -42,7 +42,8 @@
             $email = $_GET["email"];
             $curDate = date("Y-m-d H:i:s");
             $sql = "SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';";
-            /*add controll for query */
+            $query = mysqli_query($sql);
+            /*add controll for query 
             if (!$mysqli->query("SET @a:='this will not work'")) {
                printf("Error: %s\n", $mysqli->error);
                die();
