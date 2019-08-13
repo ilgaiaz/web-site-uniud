@@ -137,9 +137,9 @@
                         </div>
                         <!-- password -->
                         <div class="form-group">
-                            <label class="control-label col-sm" for="pwd">Password</label>
+                            <label class="control-label col-sm" for="pwd">Password (almeno 8 caratteri)</label>
                             <div class="col-sm">
-                                <input type="password" class="form-control" id="psw" placeholder="Inserire password" name="password" value="" required>
+                                <input type="password" class="form-control" id="psw" placeholder="Inserire password" name="password" value="" minlength="8" required>
                                 <div class="valid-feedback">Valida.</div>
                                 <div class="invalid-feedback">Per favore compila il campo.</div>
                             </div>
