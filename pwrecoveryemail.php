@@ -38,6 +38,7 @@
          require_once('config/mysql.php');
          if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"]) 
          && ($_GET["action"]=="reset") && !isset($_POST["action"])) { 
+            echo "DENTRO ALL'IF";
             $key = $_GET["key"];
             $email = $_GET["email"];
             $curDate = date("Y-m-d H:i:s");
@@ -111,7 +112,7 @@
          }
 
          if(isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"]=="update")){
-            echo $email;
+            echo "La mail è: " . $email;
             $pass = md5($_POST["password"]);
             $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE email ='".$email."';";
             mysqli_query($conn,$query);
