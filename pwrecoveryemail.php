@@ -44,7 +44,7 @@
             $sql = "SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';";
             $query = mysqli_query($sql);
             $row = mysqli_num_rows($query);
-            if (!$row>=1){
+            if ($row==""){
                $error .= '<h2>Link non valido</h2>
                <p>Il link utilizzato non è valido o è scaduto</p>';
             }else{
