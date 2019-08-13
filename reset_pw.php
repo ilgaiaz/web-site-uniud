@@ -79,8 +79,8 @@
                $addKey = substr(md5(uniqid(rand(),1)),3,10);
                $key = $key . $addKey;
                // Insert Temp Table
-               $conn->query("INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`) 
-                  VALUES ('".$email."', '".$key."', '".$expDate."');");
+               mysqli_query($conn, "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)
+               VALUES ('".$email."', '".$key."', '".$expDate."');");
                
                $output='<p>Dear user,</p>';
                $output.='<p>Please click on the following link to reset your password.</p>';
