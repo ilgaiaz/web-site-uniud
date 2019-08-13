@@ -112,9 +112,9 @@
          }
 
          if(isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"]=="update")){
-            echo "La mail è: " . $email;
+            echo "La mail è: " . $_POST["email"];
             $pass = md5($_POST["password"]);
-            $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE email ='".$email."';";
+            $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE email ='".$_POST["email"]."';";
             mysqli_query($conn,$query);
             $remove = "DELETE password_reset_temp WHERE email ='".$email."';";
             mysqli_query($conn,$remove);
