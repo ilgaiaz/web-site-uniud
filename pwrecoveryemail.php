@@ -49,6 +49,7 @@
             }else{
                $row = mysqli_fetch_assoc($query);
                $expDate = $row['expDate'];
+               echo "EXP DATE: ".$expDate."CURRENT: ".$curDate;
                if ($expDate >= $curDate){
       ?>
                   <div class="container"> 
