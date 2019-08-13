@@ -40,7 +40,6 @@
          && ($_GET["action"]=="reset") && !isset($_POST["action"])) { 
             $key = $_GET["key"];
             $email = $_GET["email"];
-            echo "DENTRO ALL'IF CON MAIL SETTATA: ".$email;
             $curDate = date("Y-m-d H:i:s");
             $query = $conn->query("SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';");
             if (!$query>=1){
@@ -95,30 +94,28 @@
                   as valid only 24 hours (1 days after request).<br /><br /></p>";
                }
             }
-         }else{
-            if($error!=""){
+         }
+         if($error!=""){
       ?>
-               <div id="container-email-error" class=" container">
-                  <div class="jumbotron">
-                     <div class="form-container">
-                        <div class="col-sm">
-                           <div class="alert alert-error"><?=$error ?></div>  
-                        </div>
+            <div id="container-email-error" class=" container">
+               <div class="jumbotron">
+                  <div class="form-container">
+                     <div class="col-sm">
+                        <div class="alert alert-error"><?=$error ?></div>  
                      </div>
                   </div>
                </div>
+            </div>
       <?php
+         } else {
+            if(isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"]=="update")){
+               $pass = md5($_POST["password"]);
+               $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE email ='".$_POST["email"]."';";
+               mysqli_query($conn,$query);
+               $remove = "DELETE password_reset_temp WHERE email ='".$email."';";
+               mysqli_query($conn,$remove);
+               header("Location: pwreset_success.html");
             }
-         }
-
-         if(isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"]=="update")){
-            echo "La mail è: " . $_POST["email"];
-            $pass = md5($_POST["password"]);
-            $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE email ='".$_POST["email"]."';";
-            mysqli_query($conn,$query);
-            $remove = "DELETE password_reset_temp WHERE email ='".$email."';";
-            mysqli_query($conn,$remove);
-            //header("Location: pwreset_success.html");
          }
       ?>
    </body>
