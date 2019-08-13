@@ -53,8 +53,9 @@
                if ($row==""){
                   $error .= "<p>Nessun  utente registrato con questa mail</p>";
                } else {
-                  $data = mysqli_fetch_assoc($query);
+                  $data = mysqli_fetch_assoc($results);
                   $user = $data['user'];
+                  echo "USER IS: ".$user;
                }
             }
             if($error!=""){
