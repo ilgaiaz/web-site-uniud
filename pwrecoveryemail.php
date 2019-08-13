@@ -38,9 +38,9 @@
          require_once('config/mysql.php');
          if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"]) 
          && ($_GET["action"]=="reset") && !isset($_POST["action"])) { 
-            echo "DENTRO ALL'IF";
             $key = $_GET["key"];
             $email = $_GET["email"];
+            echo "DENTRO ALL'IF CON MAIL SETTATA: ".$email;
             $curDate = date("Y-m-d H:i:s");
             $query = $conn->query("SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';");
             if (!$query>=1){
