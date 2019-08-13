@@ -55,7 +55,7 @@
                } else {
                   $data = mysqli_fetch_assoc($results);
                   $user = $data['user'];
-                  echo "USER IS: ".$user;
+                  $name = $data['name'];
                }
             }
             if($error!=""){
@@ -86,8 +86,9 @@
                mysqli_query($conn, "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)
                VALUES ('".$email."', '".$key."', '".$expDate."');");
                
-               $output='<p>Caro '.$user.',</p>';
+               $output='<p>Caro '.$name.',</p>';
                $output.='<p>Per favore premi il link sottostante per modificare la tua password</p>';
+               $output.='<p>Login username: '.$user.'</p>';
                $output.='<p>-------------------------------------------------------------</p>';
                $output.='<p><a href="https://web-application-uniud.herokuapp.com/pwrecoveryemail.php?
                key='.$key.'&email='.$email.'&action=reset" target="_blank">
