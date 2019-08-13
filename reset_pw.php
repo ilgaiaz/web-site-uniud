@@ -86,7 +86,7 @@
                mysqli_query($conn, "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)
                VALUES ('".$email."', '".$key."', '".$expDate."');");
                
-               $output='<p>Caro '.$name.',</p>';
+               $output='<p>Caro/a '.$name.',</p>';
                $output.='<p>Per favore premi il link sottostante per modificare la tua password</p>';
                $output.='<p>Login username: '.$user.'</p>';
                $output.='<p>-------------------------------------------------------------</p>';
