@@ -89,7 +89,7 @@
                                 <input type="submit" class="btn btn-primary" name="button" value="Accedi">
                             </div>
                         </div>
-                        <a href="reset_pw.php" >Password dimenticata?</a>
+                        <a href="reset_pw.php" >Password o username dimenticati?</a>
                     </form>
                 </div>
             </div>

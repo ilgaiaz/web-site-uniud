@@ -2,7 +2,7 @@
 <html>
    <head>
       <meta charset="utf-8">
-      <title>Reset Password Page</title>
+      <title>Reset Password</title>
       
       <meta name="description" content="Login to your profile"/>
       <meta name="author" content="Michele Gaiarin"/>
@@ -52,6 +52,9 @@
                $row = mysqli_num_rows($results);
                if ($row==""){
                   $error .= "<p>Nessun  utente registrato con questa mail</p>";
+               } else {
+                  $data = mysqli_fetch_assoc($query);
+                  $user = $data['username'];
                }
             }
             if($error!=""){
@@ -82,20 +85,19 @@
                mysqli_query($conn, "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)
                VALUES ('".$email."', '".$key."', '".$expDate."');");
                
-               $output='<p>Dear user,</p>';
-               $output.='<p>Please click on the following link to reset your password.</p>';
+               $output='<p>Caro '.$user.',</p>';
+               $output.='<p>Per favore premi il link sottostante per modificare la tua password</p>';
                $output.='<p>-------------------------------------------------------------</p>';
                $output.='<p><a href="https://web-application-uniud.herokuapp.com/pwrecoveryemail.php?
                key='.$key.'&email='.$email.'&action=reset" target="_blank">
                https://web-application-uniud.herokuapp.com/pwrecoveryemail.php
                ?key='.$key.'&email='.$email.'&action=reset</a></p>';
                $output.='<p>-------------------------------------------------------------</p>';
-               $output.='<p>Please be sure to copy the entire link into your browser.
-               The link will expire after 1 day for security reason.</p>';
-               $output.='<p>If you did not request this forgotten password email, no action 
-               is needed, your password will not be reset. However, you may want to log into 
-               your account and change your security password as someone may have guessed it.</p>';   
-               $output.='<p>Thanks,</p>';
+               $output.='<p>Assicurati di copiare l\'intero link nel browser.
+               Il link non sarà più valido tra 1 giorno per motivi di sicurezza.</p>';
+               $output.='<p>Se non hai richiesto questa mail, 
+               non serve tu faccia niente, la tua password non verra modificata.</p>';   
+               $output.='<p>Grazie,</p>';
                $output.='<p>Uniud Team</p>';
             
                //Email's data
@@ -114,7 +116,7 @@
                   echo $response->body();
                   echo $response->headers();*/
                } finally {
-               ?>
+            ?>
                   <div id="container-resetpw" class=" container">
                      <div class="jumbotron">
                         <div class="form-container">
@@ -126,11 +128,11 @@
                         </div>
                      </div>
                   </div>
-               <?php
+            <?php
                }
             }
          }else{
-      ?>
+            ?>
             <div class="container">
 	            <div class="jumbotron">
                   <div id="container-resetpw" class="form-container container">
@@ -160,6 +162,6 @@
                   </div>
                </div>
             </div> 
-      <?php } ?>  
+            <?php } ?>  
    </body>
 </html>
