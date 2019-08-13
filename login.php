@@ -40,7 +40,8 @@
                 $query = "SELECT * FROM user_data WHERE (user='".$_POST["username"]."' OR email='".$_POST["username"]."') AND password='".$pass."';";
                 $result = mysqli_query($conn,$query);
                 if ($result->num_rows) {
-                    $_SESSION["username"] = $_POST["username"];
+                    $row = mysqli_fetch_assoc($result);
+                    $_SESSION["username"] = $row["user"];
                     $_SESSION["logged_in"] = TRUE;
                     header("Location: index.html");
                 } else { 
@@ -69,7 +70,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm" for="uname">Username</label>
                             <div class="col-sm">
-                                <input type="text" class="form-control" id="uname" placeholder="Inserire username" name="username" value="" required>
+                                <input type="text" class="form-control" id="uname" placeholder="Inserire username o email" name="username" value="" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Per favore compila il campo.</div>
                             </div>
