@@ -36,14 +36,29 @@
             session_start();
             if(isset($_POST["username"], $_POST["password"], $_POST["name"], $_POST["surname"], $_POST["email"]) ) {             
                 require_once('config/mysql.php');
-                $result = $conn->query("SELECT * FROM user_data WHERE email='".$_POST["email"]."';");
+                $query = "SELECT * FROM user_data WHERE email='".$_POST["email"]."';";
+                $result = mysqli_query($conn,$query);
                 //if there is already that username show error message otherside save data
                 if (!$result->num_rows >= 1) {
-                    $result = $conn->query("SELECT * FROM user_data WHERE user='".$_POST["user"]."';");
+                    $query = "SELECT * FROM user_data WHERE user='".$_POST["user"]."';";
+                    $result = mysqli_query($conn,$query);
                     //if there is already that username show error message otherside save data
                     if (!$result->num_rows >= 1) {
-                        require_once("services/insert.php");
-                        header("Location: index.html");
+                        $email = $_POST["email"];
+                        $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+                        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+                        if(!$email){
+                            ?>
+                                <script>
+                                    $(function(){
+                                        $("#signin-error").append("<p>Email non valida</p>");
+                                    });
+                                </script>
+                            <?php
+                        } else {
+                            require_once("services/insert.php");
+                            header("Location: index.html");
+                        }
                     } else {
                         ?>
                             <script>
