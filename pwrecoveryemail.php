@@ -42,7 +42,7 @@
             $email = $_GET["email"];
             $curDate = date("Y-m-d H:i:s");
             $sql = "SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';";
-            $query = mysqli_query($sql);
+            $query = mysqli_query($conn, $sql);
             $row = mysqli_num_rows($query);
             if ($row==""){
                $error .= '<h2>Link non valido</h2>
