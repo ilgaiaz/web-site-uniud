@@ -78,14 +78,6 @@
                     </script>
                 <?php 
                 }   
-            } else {
-                ?>
-                    <script>
-                        $(function(){
-                            $("#signin-error").append("<p>Inserire tutti i campi obbligatori</p>");
-                        });
-                    </script>
-                <?php
             }
         ?>
         <div class="container">
