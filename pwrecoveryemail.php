@@ -41,11 +41,12 @@
             $key = $_GET["key"];
             $email = $_GET["email"];
             $curDate = date("Y-m-d H:i:s");
-            $query = $conn->query("SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';");
-            if (!$query>=1){
-               $error .= '<h2>Invalid Link</h2>
-               <p>The link is invalid/expired. Either you did not copy the correct link from the email, or you have already used the key in which case it is 
-               deactivated.</p>';
+            $sql = "SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';";
+            $query = mysqli_query($conn, $sql);
+            $row = mysqli_num_rows($query);
+            if ($row==""){
+               $error .= '<h2>Link non valido</h2>
+               <p>Il link utilizzato non è valido o è scaduto</p>';
             }else{
                $row = mysqli_fetch_assoc($query);
                $expDate = $row['expDate'];
@@ -94,30 +95,28 @@
                   as valid only 24 hours (1 days after request).<br /><br /></p>";
                }
             }
-         }else{
-            if($error!=""){
+         }
+         if($error!=""){
       ?>
-               <div id="container-email-error" class=" container">
-                  <div class="jumbotron">
-                     <div class="form-container">
-                        <div class="col-sm">
-                           <div class="alert alert-error"><?=$error ?></div>  
-                        </div>
+            <div id="container-email-error" class=" container">
+               <div class="jumbotron">
+                  <div class="form-container">
+                     <div class="col-sm">
+                        <div class="alert alert-error"><?=$error ?></div>  
                      </div>
                   </div>
                </div>
+            </div>
       <?php
+         } else {
+            if(isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"]=="update")){
+               $pass = md5($_POST["password"]);
+               $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE email ='".$_POST["email"]."';";
+               mysqli_query($conn,$query);
+               $remove = "DELETE FROM password_reset_temp WHERE email ='".$_POST["email"]."';";
+               mysqli_query($conn,$remove);
+               header("Location: pwreset_success.html");
             }
-         }
-
-         if(isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"]=="update")){
-            echo "DENTRO STO IF";
-            $pass = md5($_POST["password"]);
-            $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE email ='".$email."';";
-            mysqli_query($conn,$query);
-            $remove = "DELETE password_reset_temp WHERE email ='".$email."';";
-            mysqli_query($conn,$remove);
-            //header("Location: pwreset_success.html");
          }
       ?>
    </body>
