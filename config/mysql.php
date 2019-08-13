@@ -9,6 +9,18 @@ $conn = new mysqli($servername, $username, $password, $db);
 
 // Check connection
 if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+?>
+    <div id="container-conn-error" class=" container">
+        <div class="jumbotron">
+            <div class="form-container">
+                <div class="col-sm">
+                    <?php
+                        die("Connection failed: " . $conn->connect_error);
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php
 }
 ?>
