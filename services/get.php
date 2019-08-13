@@ -7,7 +7,7 @@
         $data = mysqli_fetch_assoc($query);
         $row = mysqli_num_rows($results);
         if($row=="") {
-            echo "Error";
+            echo "Error: ".$_SESSION["username"];
         } else {
             echo "<table><tr><th>Username</th><th>Nome</th><th>Cognome</th><th>Data di nascita</th><th>Emal</th></tr>";
             echo "<tr><td>".$data['user']."</td><td>".$data['name']."</td>
