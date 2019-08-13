@@ -43,19 +43,10 @@
             $curDate = date("Y-m-d H:i:s");
             $sql = "SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';";
             $query = mysqli_query($sql);
-            /*add controll for query 
-            if (!$mysqli->query("SET @a:='this will not work'")) {
-               printf("Error: %s\n", $mysqli->error);
-               die();
-             }
-             
-             $query = mysqli_query($sql);
-             var_dump($query);
-             /*end of control */
-            if (!$query>=1){
-               $error .= '<h2>Invalid Link</h2>
-               <p>The link is invalid/expired. Either you did not copy the correct link from the email, or you have already used the key in which case it is 
-               deactivated.</p>';
+            $row = mysqli_num_rows($query);
+            if (!$row>=1){
+               $error .= '<h2>Link non valido</h2>
+               <p>Il link utilizzato non è valido o è scaduto</p>';
             }else{
                $row = mysqli_fetch_assoc($query);
                $expDate = $row['expDate'];
