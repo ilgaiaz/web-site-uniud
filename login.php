@@ -37,7 +37,8 @@
             if(isset($_POST["username"]) && isset($_POST["password"])) {
                 require_once('config/mysql.php');
                 $pass = md5($_POST["password"]);
-                $result = $conn->query("SELECT * FROM user_data WHERE user='".$_POST["username"]."' AND password='".$pass."';");
+                $query = "SELECT * FROM user_data WHERE (user='".$_POST["username"]."' OR email='".$_POST["username"]."') AND password='".$pass."';";
+                $result = mysqli_query($conn,$query);
                 if ($result->num_rows) {
                     $_SESSION["username"] = $_POST["username"];
                     $_SESSION["logged_in"] = TRUE;
