@@ -56,3 +56,34 @@ table{
   -moz-box-align: left;
 }
 
+#container-signin .alert{
+  opacity: 1;
+  transition: opacity 0.3s; 
+  max-width: 40%;
+  margin-left: auto;
+  margin-right: auto
+}
+
+#container-login .alert{
+  opacity: 1;
+  transition: opacity 0.3s; 
+  max-width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#mod-info .alert{
+  opacity: 1;
+  transition: opacity 0.3s; 
+  max-width: 30%;
+  margin-left: 0%;
+  margin-right: auto;
+}
+
+#show-info .alert{
+  opacity: 1;
+  transition: opacity 0.3s; 
+  max-width: 30%;
+  margin-left: 0%;
+  margin-right: auto;
+}

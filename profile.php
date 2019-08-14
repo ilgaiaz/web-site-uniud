@@ -56,7 +56,7 @@
                      <script>
                         $(document).ready(function(){
                            showMod();
-                           errorMessage("#mod-error", "User non disponibile");
+                           errorMessage("#mod-error", "<strong>Errore: </strong>User non disponibile");
                         });
                     </script>
                   <?php
@@ -75,7 +75,7 @@
                   <script>
                      $(document).ready(function(){
                         showMod();
-                        errorMessage("#mod-error", "Email non disponibile");
+                        errorMessage("#mod-error", "<strong>Errore: </strong>Email non disponibile");
                      });
                   </script>
                   <?php
@@ -87,7 +87,7 @@
                ?>
                <script>
                   $(document).ready(function(){
-                     successMessage("#mod-success", "Dati aggiornati con successo!");
+                     successMessage("#mod-success", "<strong>Successo: </strong>Dati aggiornati!");
                   });
                </script>
                <?php
