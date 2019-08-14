@@ -42,3 +42,18 @@
 .error-warning p{
   color: #b22222;
 }
+
+table{
+  max-width: 800px;
+  text-align: left;
+  align-items: left;
+}
+
+.form-control{
+  align-content: left;
+  align-items: left;
+  text-align: left;
+  -moz-box-align: left;
+}
+
+
