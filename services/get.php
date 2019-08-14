@@ -1,5 +1,5 @@
-<div>
-    <table class="table table-striped table-hover">
+<div class="table-responsive">
+    <table class="table table-striped">
         <?php
             session_start();
             require_once('config/mysql.php');
@@ -11,24 +11,26 @@
                 echo "Error";
             } else {
             ?>
-                <thead>
                 <tr>
                     <th>Username</th>
-                    <th>Nome</th>
-                    <th>Cognome</th>
-                    <th>Data di nascita</th>
-                    <th>Email</th>
+                    <td><?=$data['user'];?></td>
                 </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?=$data['user'];?></td>
-                        <td><?=$data['name'];?></td>
-                        <td><?=$data['surname'];?></td>
-                        <td><?=$data['dateOfBirth'];?></td>
-                        <td><?=$data['email'];?></td>
-                    </tr>
-                    </tbody>
+                <tr>
+                    <th>Nome</th>
+                    <td><?=$data['name'];?></td>
+                </tr>
+                <tr>
+                    <th>Cognome</th>
+                    <td><?=$data['surname'];?></td>
+                </tr>
+                <tr>
+                    <th>Data di nascita</th>
+                    <td><?=$data['dateOfBirth'];?></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td><?=$data['email'];?></td>
+                </tr>
             <?php
             }
         ?>
