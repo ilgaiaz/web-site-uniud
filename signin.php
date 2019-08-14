@@ -12,7 +12,6 @@
             integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
             crossorigin="anonymous">
         </script>
-        <script type="text/javascript" src="script.js"></script>
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
         <!-- jQuery library -->
@@ -21,6 +20,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
         <!--Navbar show -->
@@ -50,8 +50,9 @@
                         if(!$email){
                             ?>
                                 <script>
-                                    $(function(){
-                                        $("#signin-error").append("<p>Email non valida</p>");
+                                    $(document).ready(function(){
+                                        showDiv("#signin-error");
+                                        errorMessage("#signin-error", "<strong>Errore: </strong>Email non valida");
                                     });
                                 </script>
                             <?php
@@ -62,8 +63,9 @@
                     } else {
                         ?>
                             <script>
-                                $(function(){
-                                    $("#signin-error").append("<p>Username già presente</p>");
+                                $(document).ready(function(){
+                                    showDiv("#signin-error");
+                                    errorMessage("#signin-error", "<strong>Errore: </strong>Username già presente");
                                 });
                             </script>
                         <?php
@@ -72,8 +74,9 @@
                 //if there is already the email return error
                 ?>
                     <script>
-                        $(function(){
-                            $("#signin-error").append("<p>Email già presente</p>");
+                        $(document).ready(function(){
+                            showDiv("#signin-error");
+                            errorMessage("#signin-error", "<strong>Errore: </strong>Email già presente");
                         });
                     </script>
                 <?php 
@@ -87,8 +90,7 @@
                         <h2>Registrazione</h2>
                     </div>
                     <!-- Error message if data is wrong -->
-                    <div id="signin-error" class="error-warning col-sm">
-                    </div>
+                    <div id="signin-error" class="alert alert-danger" style="display: none"></div>
                     <!-- ******** -->
                     <form id="form-signin" class="form-horizontal was-validated" action="signin.php" method="POST" 
                         oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "La password non combacia" : "")'>

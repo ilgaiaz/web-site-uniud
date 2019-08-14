@@ -7,7 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
         <link rel="icon" href="images/icon.png"/>
         <link rel="stylesheet" type="text/css" href="style.css"/>
-        <script type="text/javascript" src="script.js"></script>
         <script
         src="https://code.jquery.com/jquery-3.4.0.js"
         integrity="sha256-DYZMCC8HTC+QDr5QNaIcfR7VSPtcISykd+6eSmBW5qo="
@@ -21,6 +20,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="script.js"></script>
     </head>
     <body>
         <!--Navbar show -->
@@ -28,7 +28,7 @@
         </div>
         <script>
             $(function(){
-            $("#nav-placeholder").load("includes/navbar.php");
+                $("#nav-placeholder").load("includes/navbar.php");
             });
         </script>
         <!-- End Navbar -->
@@ -48,8 +48,9 @@
                 //if there are't that data in DB show an error message
                 ?>
                     <script>
-                        $(function(){
-                            $("#login-error").append("<p>Username o password errato</p>");
+                        $(document).ready(function(){
+                            showDiv("#login-error");
+                            errorMessage("#login-error", "<strong>Errore: </strong>Username o password errato");
                         });
                     </script>
                 <?php
@@ -63,8 +64,7 @@
                         <h2>Inserire i dati:</h2>
                     </div>
                     <!-- Error message if data is wrong -->
-                    <div id="login-error" class="error-warning col-sm">
-                    </div>
+                    <div id="login-error" class="alert alert-danger" style="display: none"></div>
                     <!-- ******** -->
                     <form id="form-login" class="form-horizontal was-validated" action="login.php" method="POST">
                         <div class="form-group">
@@ -78,9 +78,6 @@
                         <div class="form-group">
                             <label class="control-label col-sm" for="pwd">Password</label>
                             <div class="col-sm">
-                                <!-- 
-                                <input type="password" class="form-control" id="pwd" placeholder="Inserire password" name="pswd" required>
-                                -->
                                 <input type="password" class="form-control" id="psw" placeholder="Inserire password" name="password" value="" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Per favore compila il campo.</div>

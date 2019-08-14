@@ -7,6 +7,7 @@
             $result = mysqli_query($conn,$query);
             $data = mysqli_fetch_assoc($result);
             $row = mysqli_num_rows($result);
+            //Get data from DB and show inside a table
             if($row=="") {
                 echo "Error";
             } else {

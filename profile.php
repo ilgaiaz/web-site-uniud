@@ -45,6 +45,7 @@
             $row = mysqli_fetch_assoc($result); 
             $old_user = $row["user"];
             $old_email = $row["email"];
+            //If user change check if is not still preset inside db
             if($_POST["username"] != $old_user){
                $query_user = "SELECT * FROM user_data WHERE user='".$_POST["username"]."';";
                $result_user = mysqli_query($conn,$query_user);
@@ -61,6 +62,7 @@
                   <?php
                }
             }
+            //If email change check if is valid and not still preset inside db
             $email = $_POST["email"];
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);
             $email = filter_var($email, FILTER_VALIDATE_EMAIL);
@@ -79,6 +81,7 @@
                   <?php
                }
             }
+            //If there are no error update the db
             if(!$error){
                require_once('services/modify.php');
                ?>
@@ -96,18 +99,17 @@
       <div id="container-mod-data" class="container">
          <div class="jumbotron">
             <div id="show-info" >
+               <!--Show table with data from db-->
                <h2>Dati personali</h2>
                <div id="mod-success" class="alert alert-success" style="display: none"></div>
                <?php
                   require_once('services/get.php');
                ?>   
                <div class="form-group">      
-                  <!--  
-                  <input id="submit-mod-data" type="button" class="btn btn-primary" name="mod-data" value="Modifica dati">
-                     -->
                   <button id="submit-mod-data" class="btn btn-primary">Modifica dati</button>
                </div>  
-            </div>      
+            </div>
+            <!--Show table where is posible insert new data-->      
             <div id="mod-info" style="display: none">
                <h2>Modifica dati</h2>
                <div id="mod-error" class="alert alert-danger" style="display: none"></div>
