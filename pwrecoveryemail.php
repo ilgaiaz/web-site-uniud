@@ -64,7 +64,7 @@
                               <div class="form-group">
                                  <label class="control-label col-sm" for="pwd">Nuova Password</label>
                                  <div class="col-sm">
-                                    <input type="password" class="form-control" id="psw1" placeholder="Inserire nuova password" name="password" value="" required>
+                                    <input type="password" class="form-control" id="psw1" placeholder="Inserire nuova password" name="password" value="" minlength="8" required>
                                        <div class="valid-feedback">Valida.</div>
                                        <div class="invalid-feedback">Per favore compila il campo.</div>
                                  </div>
