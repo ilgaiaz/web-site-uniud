@@ -58,7 +58,7 @@
                             <?php
                         } else {
                             require_once("services/insert.php");
-                            header("Location: index.html");
+                            header("Location: signin_success.html");
                         }
                     } else {
                         ?>
