@@ -35,9 +35,9 @@
       <!-- End Navbar -->
       <?php
          session_start();
-         if(!empty($_POST["reset"])){
+         if(isset($_POST["password"]) && isset($_POST["confirm_password"]) && (!empty($_POST["reset"]))){
             require_once('config/mysql.php');
-            $pass = md5($_POST["password"]);
+            $pass = password_hash($_POST["password"], PASSWORD_ARGON2ID);
             $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE user ='".$_SESSION["username"]."';";
             mysqli_query($conn,$query);
             header("Location: pwreset_success.html");

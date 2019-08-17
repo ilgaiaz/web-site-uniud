@@ -36,24 +36,29 @@
             session_start();
             if(isset($_POST["username"]) && isset($_POST["password"])) {
                 require_once('config/mysql.php');
-                $pass = md5($_POST["password"]);
-                $query = "SELECT * FROM user_data WHERE (user='".$_POST["username"]."' OR email='".$_POST["username"]."') AND password='".$pass."';";
-                $result = mysqli_query($conn,$query);
-                if ($result->num_rows) {
-                    $row = mysqli_fetch_assoc($result);
-                    $_SESSION["username"] = $row["user"];
-                    $_SESSION["logged_in"] = TRUE;
-                    header("Location: index.html");
-                } else { 
-                //if there are't that data in DB show an error message
-                ?>
-                    <script>
-                        $(document).ready(function(){
-                            showDiv("#login-error");
-                            errorMessage("#login-error", "<strong>Errore: </strong>Username o password errato");
-                        });
-                    </script>
-                <?php
+                //retrive hash from db and check if is correct
+                $query_hash = "SELECT password FROM user_data WHERE (user='".$_POST["username"]."' OR email='".$_POST["username"]."');";
+                $result = mysqli_query($conn,$query_hash);
+                $val = mysqli_fetch_assoc($result);
+                if(password_verify($_POST["password"],$val["password"])){    
+                    $query = "SELECT * FROM user_data WHERE (user='".$_POST["username"]."' OR email='".$_POST["username"]."');";
+                    $result = mysqli_query($conn,$query);
+                    if ($result->num_rows) {
+                        $row = mysqli_fetch_assoc($result);
+                        $_SESSION["username"] = $row["user"];
+                        $_SESSION["logged_in"] = TRUE;
+                        header("Location: index.html");
+                    } else { 
+                    //if there are't that data in DB show an error message
+                    ?>
+                        <script>
+                            $(document).ready(function(){
+                                showDiv("#login-error");
+                                errorMessage("#login-error", "<strong>Errore: </strong>Username o password errato");
+                            });
+                        </script>
+                    <?php
+                    }
                 }
             }   
         ?>
