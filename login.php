@@ -49,16 +49,26 @@
                         $_SESSION["logged_in"] = TRUE;
                         header("Location: index.html");
                     } else { 
+                        //if there are't that data in DB show an error message
+                        ?>
+                            <script>
+                                $(document).ready(function(){
+                                    showDiv("#login-error");
+                                    errorMessage("#login-error", "<strong>Errore: </strong>Username o email errato");
+                                });
+                            </script>
+                        <?php
+                    }
+                } else { 
                     //if there are't that data in DB show an error message
                     ?>
                         <script>
                             $(document).ready(function(){
                                 showDiv("#login-error");
-                                errorMessage("#login-error", "<strong>Errore: </strong>Username o password errato");
+                                errorMessage("#login-error", "<strong>Errore: </strong>Password errata");
                             });
                         </script>
                     <?php
-                    }
                 }
             }   
         ?>
