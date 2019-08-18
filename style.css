@@ -67,7 +67,7 @@ table{
 #container-login .alert{
   opacity: 1;
   transition: opacity 0.3s; 
-  max-width: 40%;
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -75,7 +75,7 @@ table{
 #mod-info .alert{
   opacity: 1;
   transition: opacity 0.3s; 
-  max-width: 30%;
+  max-width: 400px;
   margin-left: 0%;
   margin-right: auto;
 }
@@ -83,7 +83,7 @@ table{
 #show-info .alert{
   opacity: 1;
   transition: opacity 0.3s; 
-  max-width: 30%;
+  max-width: 400px;
   margin-left: 0%;
   margin-right: auto;
 }
