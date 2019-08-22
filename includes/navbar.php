@@ -13,7 +13,7 @@
     	</a>-->
 		<ul class="navbar-nav">
 			<li class="nav-item active">
-			  <a class="nav-link" href="index.html">Home</a>
+			  <a class="nav-link" href="index.php">Home</a>
 			</li>
 			<li class="nav-item">
 			  <a class="nav-link" href="#">Progetti</a>
@@ -24,7 +24,7 @@
         <?php
             session_start();
             //Check login. If is done show username in navbar
-            if($_SESSION['username']){
+            if(isset($_SESSION['username'])){
                 //require_once('config/mysql.php');
                 //$query='SELECT * FROM user_data';
                 //$result = $conn->query($query);
