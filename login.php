@@ -20,7 +20,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="script.js"></script>
+        <script type="text/javascript" src="js/script.js?v=2"></script>
+        <script type="text/javascript" src="js/cookie.js?v=2"></script>
     </head>
     <body>
         <!--Navbar show -->
@@ -47,7 +48,14 @@
                         $row = mysqli_fetch_assoc($result);
                         $_SESSION["username"] = $row["user"];
                         $_SESSION["logged_in"] = TRUE;
-                        header("Location: index.html");
+                        ?>
+                        <script>
+                            //set cookie to destroy when browser closed
+                            setCookie("username", "<?php echo $_SESSION["username"];?>");
+                            deleteCookie("session_destroyed");
+                            window.location.href = "index.php";
+                        </script>
+                        <?php
                     } else { 
                         //if there are't that data in DB show an error message
                         ?>
