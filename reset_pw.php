@@ -22,7 +22,7 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
       <!-- Latest compiled JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="script.js?v=2"></script>
+      <script type="text/javascript" src="js/script.js?v=2"></script>
       <script type="text/javascript" src="js/cookie.js?v=2"></script>
    </head>
 
