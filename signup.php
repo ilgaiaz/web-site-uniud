@@ -59,7 +59,7 @@
                             <?php
                         } else {
                             require_once("services/insert.php");
-                            header("Location: signin_success.html");
+                            header("Location: signup_success.html");
                         }
                     } else {
                         ?>
@@ -93,7 +93,7 @@
                     <!-- Error message if data is wrong -->
                     <div id="signin-error" class="alert alert-danger" style="display: none"></div>
                     <!-- ******** -->
-                    <form id="form-signin" class="form-horizontal was-validated" action="signin.php" method="POST" 
+                    <form id="form-signin" class="form-horizontal was-validated" action="signup.php" method="POST" 
                         oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "La password non combacia" : "")'>
                         <!-- Campo nome -->
                         <div class="form-group">

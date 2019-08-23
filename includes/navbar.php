@@ -45,7 +45,7 @@
         <?php } else { ?>
                 <!-- If the the login is't done show signin and login link -->
                 <li class="nav-item"> 
-                    <a id="sign-in" class="nav-link" href="signin.php">Registrati</a>
+                    <a id="sign-in" class="nav-link" href="signup.php">Registrati</a>
                 </li>
                 <li class="nav-item"> 
                     <a id="login" class="nav-link" href="login.php">Login</a>
