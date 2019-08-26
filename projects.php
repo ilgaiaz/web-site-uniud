@@ -72,8 +72,8 @@
                                         <td class="prod-img-<?php echo $ind[$i];?>"><img value="prod-spec-<?php echo $ind[$i];?>" class="img-project" src="<?php echo $path[$i];?>" onclick=showInfo(this)></td>
                                         <div id="showPar">
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none"><?php echo $descr[$i] ;?></td>
-                                            <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none"><?php echo $pow[$i] ;?> W</td>
-                                            <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none">€ <?php echo $cost[$i] ;?></td>
+                                            <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap><?php echo $pow[$i] ;?> W</td>
+                                            <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap>€ <?php echo $cost[$i] ;?></td>
                                         </div>
                                         </tr>
                                     <?php
