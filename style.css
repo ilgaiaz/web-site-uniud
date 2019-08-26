@@ -44,7 +44,6 @@
 }
 
 table{
-  max-width: 800px;
   text-align: left;
   align-items: left;
 }
@@ -86,4 +85,31 @@ table{
   max-width: 400px;
   margin-left: 0%;
   margin-right: auto;
+}
+
+
+#project-container{
+	margin-top: 30px;
+	margin-left: 75px;
+}
+
+
+img:hover{
+	cursor: pointer;
+}
+
+
+img.img-project{
+	border: solid thin #F30C10;
+	max-width: 100px;
+	height: auto;
+}
+
+.img-project.selected{
+	border: solid thin #09E31D;
+}
+
+
+#toggleDiv.media-body{
+  display: none;
 }
