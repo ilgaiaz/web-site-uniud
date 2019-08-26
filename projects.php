@@ -40,12 +40,12 @@
                             $descr = array();
                             $pow = array();
                             $prezzo = array();
-                            $link = array();
+                            $path = array();
                             $ind = array();
                             $i = 0;
                             require_once("config/mysql.php");
-                            $query = "SELECT prodotti.link, prodotti.nome_prodotto,specs.descrizione,specs.potenza_assorbita, specs.ind,prodotti.prezzo 
-                            FROM prodotti JOIN specs ON prodotti.ind=specs.ind";
+                            $query = "SELECT products.path, products.product_name,specs.description,specs.absorbed_power, specs.id,products.price 
+                            FROM products JOIN specs ON products.id=specs.id";
                             $result = mysqli_query($conn,$query);
                         
                             if($result->num_rows){
@@ -58,18 +58,18 @@
                                     </tr>
                                 <?php
                                 while($row = mysqli_fetch_assoc($result)){
-                                    $ind[$i] = $row['ind'];
-                                    $link[$i] = $row['link'];
-                                    $name[$i] = $row['nome_prodotto'];
+                                    $ind[$i] = $row['id'];
+                                    $path[$i] = $row['path'];
+                                    $name[$i] = $row['product_name'];
                                     //echo $row['nome_prodotto'];
-                                    $descr[$i] = $row['descrizione'];
+                                    $descr[$i] = $row['description'];
                                     //echo $row['descrizione'];
-                                    $pow[$i] = $row['potenza_assorbita'];
+                                    $pow[$i] = $row['absorbed_power'];
                                     //echo $row['potenza_assorbita'];
-                                    $cost[$i] = $row['prezzo'];	
+                                    $cost[$i] = $row['price'];	
                                     ?>
                                         <tr>
-                                        <td class="prod-img-<?php echo $ind[$i];?>"><img value="prod-spec-<?php echo $ind[$i];?>" class="img-project" src="<?php echo $link[$i];?>" onclick=showInfo(this)></td>
+                                        <td class="prod-img-<?php echo $ind[$i];?>"><img value="prod-spec-<?php echo $ind[$i];?>" class="img-project" src="<?php echo $path[$i];?>" onclick=showInfo(this)></td>
                                         <div id="showPar">
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none"><?php echo $descr[$i] ;?></td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none"><?php echo $pow[$i] ;?> W</td>
@@ -84,7 +84,7 @@
                                         <td>Totale</td>
                                         <td></td>
                                         <td id="p_tot">0</td>
-                                        <td id="c_tot">0.0</td>
+                                        <td id="c_tot">0.00</td>
                                     </tr>
                                 <?php
                             } else{
