@@ -50,12 +50,15 @@
                         
                             if($result->num_rows){
                                 ?>
-                                    <tr>
-                                        <th>Prodotto</th>
-                                        <th>Descrizione</th>
-                                        <th>Potenza</th>
-                                        <th>Prezzo</th>
-                                    </tr>
+                                    <thead>
+                                        <tr>
+                                            <th>Prodotto</th>
+                                            <th>Descrizione</th>
+                                            <th>Potenza</th>
+                                            <th>Prezzo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                 <?php
                                 while($row = mysqli_fetch_assoc($result)){
                                     $ind[$i] = $row['id'];
@@ -80,12 +83,15 @@
                                     $i++;
                                 }
                                 ?>
-                                    <tr>
-                                        <td>Totale</td>
-                                        <td></td>
-                                        <td id="p_tot">0</td>
-                                        <td id="c_tot">0.00</td>
-                                    </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td>Totale</td>
+                                            <td></td>
+                                            <td id="p_tot">0</td>
+                                            <td id="c_tot">0.00</td>
+                                        </tr>
+                                    </tfoot>
                                 <?php
                             } else{
                             ?>
