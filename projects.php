@@ -36,6 +36,7 @@
                 <div class="table-responsive">
                     <table id="products-table" class="table table-hover">
                         <?php
+                            /*retrieve data about product with a join*/
                             $name = array();
                             $descr = array();
                             $pow = array();
@@ -60,6 +61,7 @@
                                     </thead>
                                     <tbody>
                                 <?php
+                                //save data into variable and show in a table
                                 while($row = mysqli_fetch_assoc($result)){
                                     $ind[$i] = $row['id'];
                                     $path[$i] = $row['path'];
