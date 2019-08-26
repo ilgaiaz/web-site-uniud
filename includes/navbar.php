@@ -16,7 +16,7 @@
 			  <a class="nav-link" href="index.php">Home</a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="#">Progetti</a>
+			  <a class="nav-link" href="projects.php">Progetti</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
