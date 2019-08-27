@@ -1,36 +1,84 @@
+function numberFromHTML(text, typeOfData){
+    //use regex for remove all char who aren't number
+    var numbers = text.match(/(\d[\d\.]*)/g);
+    var res;
+    //check  the number type and return the number
+    if(typeOfData == "int"){
+        res = parseInt(numbers,10);
+    } else if(typeOfData == "float") {
+        res = parseFloat(numbers,10);
+    }
+    return res;
+}
+
 function updateResult(class_selector){
-    
+    //Retrive the value stored on the cells (where there is the tot) 
+    var text_res_p = document.getElementById("p_tot").innerHTML;
+    var text_res_c = document.getElementById("c_tot").innerHTML;
+    //Convert the result in number  
+    var sum_p = numberFromHTML(text_res_p, "int");
+    var sum_c = numberFromHTML(text_res_c, "float");
+
+     /*Retrieve the class of the row to show/hide
+     the class is passed by the image who store the value, and it is passed when
+     the image is clicked 
+    var selected_id = array();*/
     var checker = document.getElementsByClassName(class_selector);
-    //Get result value from table and convert in number       
-    var text_sum_p = document.getElementById("p_tot").innerHTML;
-    var text_sum_c = document.getElementById("c_tot").innerHTML;
-    var numbers_sum_p = text_sum_p.match(/(\d[\d\.]*)/g);
-    var numbers_sum_c = text_sum_c.match(/(\d[\d\.]*)/g);
-    var sum_p = parseInt(numbers_sum_p,10);
-    var sum_c = parseFloat(numbers_sum_c,10);
-    /*Get the value from the row linked with the clicked image*/
+
+    /*In this case we obtain an array of HTML object
+    so get the power and cost ones and convert it in number*/
     var text_p = checker[1].innerHTML;
     var text_c = checker[2].innerHTML;
-    var numbers_p = text_p.match(/(\d[\d\.]*)/g);
-    var numbers_c = text_c.match(/(\d[\d\.]*)/g);
+    var number_p = numberFromHTML(text_p, "int");
+    var number_c = numberFromHTML(text_c, "float");
     /********************/
     /*Check if the clicked image show or hide info
     then make a sum or difference with the total stored in the table */
     if (window.getComputedStyle(checker[2]).display !== "none") {
-        sum_p += parseInt(numbers_p);
-        sum_c += parseFloat(numbers_c);
+        //could be useful save a variable for know what component is set to show!!!!!!!!!!!
+        //maybe save class_selector in a vector and extract his id
+        sum_p += number_p;
+        sum_c += number_c;
     } else {
-        sum_p -= parseInt(numbers_p);
-        sum_c -= parseFloat(numbers_c);
+        sum_p -= number_p;
+        sum_c -= number_c;
     }
     //Show result in the table
     $("#p_tot").text(sum_p + " W");
     $("#c_tot").text("€" + sum_c.toFixed(2));   
-}
+};
             
 function showInfo(el){
     //Get the class value to show when the image is clicked
     var showPar = "." + el.getAttribute("value");
     $(showPar).toggle();
     updateResult(el.getAttribute("value"));
+};
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
 }
+
+function storeData(){
+    if (getCookie("session_destroyed") == "true" ){
+        $("#save-error").show();
+    }
+};
+
+//If a user is logged in show the save button
+$(document).ready(function(){
+    if(getCookie("session_destroyed") != "true" ){
+        $("#submit-save-product").show();
+    }
+});
