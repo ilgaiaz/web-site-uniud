@@ -33,6 +33,9 @@
         </div>
         <div id="container-mod-data" class="container">
             <div class="jumbotron">
+                <!--<div class="container">
+                    Add some description
+                </div> -->
                 <div class="table-responsive">
                     <table id="products-table" class="table table-hover">
                         <?php
@@ -74,7 +77,7 @@
                                     $cost[$i] = $row['price'];	
                                     ?>
                                         <tr>
-                                        <td class="prod-img-<?php echo $ind[$i];?>"><img value="prod-spec-<?php echo $ind[$i];?>" class="img-project" src="<?php echo $path[$i];?>" onclick=showInfo(this)></td>
+                                        <td class="prod-img-<?php echo $ind[$i];?>"><img value="prod-spec-<?php echo $ind[$i];?>" class="img-project" src="<?php echo $path[$i];?>" onclick=toggleInfo(this)></td>
                                         <div id="showPar">
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none"><?php echo $descr[$i] ;?></td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap><?php echo $pow[$i] ;?> W</td>
@@ -104,6 +107,10 @@
                             }
                         ?>
                     </table>
+                </div>
+                <div id="input-mod">     
+                    <input id="submit-save-product" type="submit" class="btn btn-primary" name="sub-prod" value="Salva prodotti" style="display: none">
+                    <div id="stored-data" style="display: none"></div>
                 </div>
             </div>
         </div>
