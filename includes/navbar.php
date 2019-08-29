@@ -16,7 +16,7 @@
 			  <a class="nav-link" href="index.php">Home</a>
 			</li>
 			<li class="nav-item">
-			  <a class="nav-link" href="#">Progetti</a>
+			  <a class="nav-link" href="projects.php">Progetti</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav ml-auto">
@@ -37,6 +37,7 @@
         ?>
                 </a>
                 <div class="dropdown-menu">
+                    <a class="dropdown-item" href="products.php">Componenti</a>
                     <a class="dropdown-item" href="profile.php">Visualizza profilo</a>
                     <a class="dropdown-item" href="pwrecovery.php">Cambia Password</a>
                     <a class="dropdown-item" href="logout.php">Logout</a>

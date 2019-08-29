@@ -47,6 +47,7 @@
                     if ($result->num_rows) {
                         $row = mysqli_fetch_assoc($result);
                         $_SESSION["username"] = $row["user"];
+                        $_SESSION["userID"] = $row["userID"];
                         $_SESSION["logged_in"] = TRUE;
                         ?>
                         <script>
