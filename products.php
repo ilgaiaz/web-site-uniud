@@ -20,7 +20,6 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/script.js?v=2"></script>
 		<script type="text/javascript" src="js/cookie.js?v=2"></script>
-		<script type="text/javascript" src="js/stored.js?v=2"></script>
    	</head>
 
     <body>
@@ -51,9 +50,11 @@
 								<thead>
 									<tr>
 										<th>Prodotto</th>
+										<th>Nome</th>
 										<th>Descrizione</th>
 										<th>Potenza</th>
 										<th>Prezzo</th>
+										<th>Esempi</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -75,13 +76,29 @@
 										//echo $row['descrizione'];
 										$pow = $row['absorbed_power'];
 										//echo $row['potenza_assorbita'];
-										$cost = $row['price'];	
+										$cost = $row['price'];
+										
+										$query2 = "SELECT link FROM `link_esempi` WHERE ID = '".$ind."'";
+										$result2 = mysqli_query($conn,$query2);
 										?>
 										<tr>
 											<td class="prod-img"><img class="img-project" src="<?php echo $path;?>"></td>
+											<td class="prod-spec-name"><?php echo $name;?></td>
 											<td class="prod-spec-description"><?php echo $descr;?></td>
 											<td class="prod-spec-power" nowrap><?php echo $pow ;?> W</td>
 											<td class="prod-spec-cost" nowrap>€ <?php echo $cost ;?></td>
+											<td class="prod-spec-link" nowrap>
+                                            <?php 
+                                                if($result2->num_rows){
+													$j = 1;
+													while($row2 = mysqli_fetch_assoc($result2)){			
+														echo '<a target="_blank" rel="noopener noreferrer" href="'.$row2["link"].'">Esempio '.$j.'';
+														echo '<br>';
+														$j++;
+													}
+                                                }
+                                            ?>
+                                            </td>
 										</tr>
 										<?php
 									}
@@ -94,8 +111,10 @@
 									<tr>
 										<td>Totale</td>
 										<td></td>
+										<td></td>
 										<td id="p_tot"><?php echo $total_p; ?> W</td>
 										<td id="c_tot">€ <?php echo $total_c; ?></td>
+										<td></td>
 									</tr>
 								</tfoot>
 					</table>

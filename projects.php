@@ -20,7 +20,8 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="js/script.js?v=2"></script>
 		<script type="text/javascript" src="js/cookie.js?v=2"></script>
-		<script type="text/javascript" src="js/products.js?v=2"></script>
+        <script type="text/javascript" src="js/products.js?v=2"></script>
+        <script type="text/javascript" src="js/table_search.js?v=2"></script>
    	</head>
 
     <body>
@@ -36,6 +37,7 @@
                 <!--<div class="container">
                     Add some description
                 </div> -->
+                <input type="text" id="myInput" onkeyup="search('myInput','products-table',1)" placeholder="Cerca per nome componente.." title="Type in a name">
                 <div class="table-responsive">
                     <table id="products-table" class="table table-hover">
                         <?php
@@ -57,6 +59,7 @@
                                     <thead>
                                         <tr>
                                             <th>Prodotto</th>
+                                            <th>Nome</th>
                                             <th>Descrizione</th>
                                             <th>Potenza</th>
                                             <th>Prezzo</th>
@@ -83,7 +86,7 @@
                                     ?>
                                         <tr>
                                         <td class="prod-img-<?php echo $ind[$i];?>"><img value="prod-spec-<?php echo $ind[$i];?>" class="img-project" src="<?php echo $path[$i];?>" onclick=toggleInfo(this)></td>
-                                        <div id="showPar">
+                                        <td class="prod-name"><?php echo $name[$i] ;?></td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none"><?php echo $descr[$i] ;?></td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap><?php echo $pow[$i] ;?> W</td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap>€ <?php echo $cost[$i] ;?></td>
@@ -99,7 +102,7 @@
                                                 }
                                             ?>
                                             </td>
-                                        </div>
+                                        
                                         </tr>
                                     <?php
                                     $i++;
@@ -110,8 +113,10 @@
                                         <tr>
                                             <td>Totale</td>
                                             <td></td>
+                                            <td></td>
                                             <td id="p_tot">0</td>
                                             <td id="c_tot">0.00</td>
+                                            <td></td>
                                         </tr>
                                     </tfoot>
                                 <?php
