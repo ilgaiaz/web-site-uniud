@@ -60,6 +60,7 @@ function toggleInfo(el){
     //Get the class value to show when the image is clicked
     var showPar = "." + el.getAttribute("value");
     $(showPar).toggle();
+    $(el).toggleClass("selected");
     updateResult(el.getAttribute("value"));
 };
 
