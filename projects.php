@@ -60,6 +60,7 @@
                                             <th>Descrizione</th>
                                             <th>Potenza</th>
                                             <th>Prezzo</th>
+                                            <th>Esempi di utilizzo</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -75,6 +76,10 @@
                                     $pow[$i] = $row['absorbed_power'];
                                     //echo $row['potenza_assorbita'];
                                     $cost[$i] = $row['price'];	
+
+                                    $query2 = "SELECT link FROM `link_esempi` WHERE ID = '".$ind[$i]."'";
+									$result2 = mysqli_query($conn,$query2);
+
                                     ?>
                                         <tr>
                                         <td class="prod-img-<?php echo $ind[$i];?>"><img value="prod-spec-<?php echo $ind[$i];?>" class="img-project" src="<?php echo $path[$i];?>" onclick=toggleInfo(this)></td>
@@ -82,6 +87,18 @@
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none"><?php echo $descr[$i] ;?></td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap><?php echo $pow[$i] ;?> W</td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap>€ <?php echo $cost[$i] ;?></td>
+                                            <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap>
+                                            <?php 
+                                                if($result2->num_rows){
+													$j = 1;
+													while($row2 = mysqli_fetch_assoc($result2)){			
+														echo '<a target="_blank" rel="noopener noreferrer" href="'.$row2["link"].'">Esempio '.$j.'';
+														echo '<br>';
+														$j++;
+													}
+                                                }
+                                            ?>
+                                            </td>
                                         </div>
                                         </tr>
                                     <?php
