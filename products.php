@@ -131,7 +131,7 @@
 								?>
 								<div>
 									<h2>Nessun elemento salvato</h2>
-									<p>Se desideri salvare una ricerca vai nella pagina progetti e salva i tuoi prodotti</p>
+									<p>Se desideri salvare una ricerca vai nella pagina "componenti" e salva i tuoi prodotti</p>
 									<input id="go-to-search" type="submit" class="btn btn-primary" name="sub-go" value="Vai" onclick="location.href = 'projects.php'">
 								</div>
 								<?php
