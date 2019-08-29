@@ -38,11 +38,16 @@
 						<?php
 							session_start();
 							require_once("config/mysql.php");
+							if(isset($_POST['sub-del'])){
+								$query_delete = "DELETE FROM products_stored WHERE userID = '".$_SESSION["userID"]."'";
+								mysqli_query($conn,$query_delete);
+							}
 							$query_user = "SELECT * FROM products_stored WHERE userID = '".$_SESSION["userID"]."'";
 							$result_user = mysqli_query($conn,$query_user);
 							$row_id = mysqli_fetch_assoc($result_user);
-							$product_id = unserialize($row_id["productsID_array"]);
-							?>			
+							if($result_user->num_rows){
+								$product_id = unserialize($row_id["productsID_array"]);
+								?>			
 								<thead>
 									<tr>
 										<th>Prodotto</th>
@@ -52,40 +57,38 @@
 									</tr>
 								</thead>
 								<tbody>
-							<?php
-
-							$total_p = 0;
-							$total_c = 0;
-							foreach ($product_id as $value) {
-								$query = "SELECT products.path, products.product_name,specs.description,specs.absorbed_power, specs.id,products.price 
-								FROM products JOIN specs ON products.id=specs.id WHERE products.id = '".$value."'";
-								$result = mysqli_query($conn,$query);
-								$row = mysqli_fetch_assoc($result);
-								if($result->num_rows){
-									
-									//save data into variable and show in a table
-									$ind = $row['id'];
-									$path = $row['path'];
-									$name = $row['product_name'];
-									//echo $row['nome_prodotto'];
-									$descr = $row['description'];
-									//echo $row['descrizione'];
-									$pow = $row['absorbed_power'];
-									//echo $row['potenza_assorbita'];
-									$cost = $row['price'];	
-									?>
+								<?php
+								$total_p = 0;
+								$total_c = 0;
+								foreach ($product_id as $value) {
+									$query = "SELECT products.path, products.product_name,specs.description,specs.absorbed_power, specs.id,products.price 
+									FROM products JOIN specs ON products.id=specs.id WHERE products.id = '".$value."'";
+									$result = mysqli_query($conn,$query);
+									$row = mysqli_fetch_assoc($result);
+									if($result->num_rows){
+										//save data into variable and show in a table
+										$ind = $row['id'];
+										$path = $row['path'];
+										$name = $row['product_name'];
+										//echo $row['nome_prodotto'];
+										$descr = $row['description'];
+										//echo $row['descrizione'];
+										$pow = $row['absorbed_power'];
+										//echo $row['potenza_assorbita'];
+										$cost = $row['price'];	
+										?>
 										<tr>
 											<td class="prod-img"><img class="img-project" src="<?php echo $path;?>"></td>
 											<td class="prod-spec-description"><?php echo $descr;?></td>
 											<td class="prod-spec-power" nowrap><?php echo $pow ;?> W</td>
 											<td class="prod-spec-cost" nowrap>€ <?php echo $cost ;?></td>
 										</tr>
-									<?php
-								}
-								$total_p += $pow;
-								$total_c += $cost;
-							} 	
-							?>
+										<?php
+									}
+									$total_p += $pow;
+									$total_c += $cost;
+								} 	
+								?>
 								</tbody>
 								<tfoot>
 									<tr>
@@ -95,9 +98,26 @@
 										<td id="c_tot">€ <?php echo $total_c; ?></td>
 									</tr>
 								</tfoot>
-								<?php				
-							?>
 					</table>
+				</div>
+					<form id="form-delete-stored class="form-horizontal was-validated" action="products.php" method="POST">
+						<div id="input-mod">     
+							<input id="submit-delete-search" type="submit" class="btn btn-primary" name="sub-del" value="Elimina">
+						<div id="delete-data" style="display: none"></div>
+					</form>
+			
+								
+								<?php
+							}else{
+								?>
+								<div>
+									<h2>Nessun elemento salvato</h2>
+									<p>Se desideri salvare una ricerca vai nella pagina progetti e salva i tuoi prodotti</p>
+									<input id="go-to-search" type="submit" class="btn btn-primary" name="sub-go" value="Vai" onclick="location.href = 'projects.php'">
+								</div>
+								<?php
+							}
+								?>
 				</div>	
             </div>
         </div>
