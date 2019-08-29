@@ -40,6 +40,7 @@
         ?>
                 </a>
                 <div class="dropdown-menu">
+                    <a class="dropdown-item" href="products.php">Componenti</a>
                     <a class="dropdown-item" href="profile.php">Visualizza profilo</a>
                     <a class="dropdown-item" href="pwrecovery.php">Cambia Password</a>
                     <a class="dropdown-item" href="logout.php">Logout</a>
