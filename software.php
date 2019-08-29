@@ -22,6 +22,7 @@
 			<script type="text/javascript" src="js/script.js?v=2"></script>
 			<script type="text/javascript" src="js/cookie.js?v=2"></script>
 			<script type="text/javascript" src="js/products.js?v=2"></script>
+			<script type="text/javascript" src="js/table_search.js?v=2"></script>
 	</head>
 	<body>
 		<div class="container" id="nav-placeholder">
@@ -33,28 +34,30 @@
 			</div>
 		<div id="container-mod-data" class="container">
 			<div class="jumbotron">
+				<input type="text" id="myInput" onkeyup="search('myInput','products-table',0)" placeholder="Cerca per linguaggio.." title="Type in a name">
 				<div class="table-responsive">
 					<div class="table-responsive">
 						<table id="products-table" class="table table-hover">				
 							<?php				
 								require_once("config/mysql.php");
-								$query = "SELECT products.product_name, software.name, software.description, software.link FROM products JOIN hw_sw ON hw_sw.hwID = products.id JOIN software ON hw_sw.swID = software.softwareID";
+								$query = "SELECT products.product_name, software.name, software.description, software.link 
+								FROM products JOIN hw_sw ON hw_sw.hwID = products.id JOIN software ON hw_sw.swID = software.softwareID ORDER BY software.name ASC";
 								$result = mysqli_query($conn,$query);
 								if($result->num_rows)
 								{
 									?>
 										<tr>
-											<th>Prodotto</th>
-											<th>Software associato</th>
+											<th>Software</th>
+											<th>Prodotto associato</th>
 											<th>Descrizione</th>
 											<th>Link utili</th>
 										</tr>
 									<?php
 									while($row = mysqli_fetch_assoc($result)){
 										?>
-											<tr>											
+											<tr>										
+												<td><?php echo $row["name"]?></td>	
 												<td><?php echo $row["product_name"]?></td>
-												<td><?php echo $row["name"]?></td>
 												<td><?php echo $row["description"]?></td>
 												<td><?php echo '<a target="_blank" rel="noopener noreferrer" href="'.$row["link"].'">'.$row["link"].'</a>' ?></td>
 											</tr>
