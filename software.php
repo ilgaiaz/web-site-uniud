@@ -34,8 +34,8 @@
 			</div>
 		<div id="container-mod-data" class="container">
 			<div class="jumbotron">
-				<input type="text" id="myInput_l" class="tab_input" onkeyup="search('myInput_l','products-table',0)" placeholder="Cerca per linguaggio.." title="Type in a name">
-				<input type="text" id="myInput_c" class="tab_input" onkeyup="search('myInput_c','products-table',1)" placeholder="Cerca per componente.." title="Type in a name">
+				<input type="text" id="myInput_l" class="tab_input" onkeyup="search('myInput_l','products-table',0)" placeholder="Cerca linguaggio.." title="Type in a name">
+				<input type="text" id="myInput_c" class="tab_input" onkeyup="search('myInput_c','products-table',1)" placeholder="Cerca componente.." title="Type in a name">
 				<div class="table-responsive">
 					<div class="table-responsive">
 						<table id="products-table" class="table table-hover">				
@@ -58,11 +58,15 @@
 									<?php
 									while($row = mysqli_fetch_assoc($result)){
 										?>
-											<tr>										
+											<tr class="text">										
 												<td><?php echo $row["name"]?></td>	
-												<td><?php echo $row["GROUP_CONCAT(products.product_name)"]?></td>
-												<td><?php echo utf8_encode($row["description"])?></td>
-												<td><?php echo '<a target="_blank" rel="noopener noreferrer" href="'.$row["link"].'">'.$row["link"].'</a>' ?></td>
+												<td>
+													<div class="long-text"><?php echo $row["GROUP_CONCAT(products.product_name)"]?></div>
+												</td>
+												<td><div class="long-text"> <?php echo utf8_encode($row["description"])?> </div> </td>
+												<td class="long-link">
+													<?php echo '<a target="_blank" rel="noopener noreferrer" href="'.$row["link"].'">'.$row["link"].'</a>' ?>
+												</td>
 											</tr>
 										<?php									
 									}								

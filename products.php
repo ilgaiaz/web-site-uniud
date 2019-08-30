@@ -84,7 +84,9 @@
 										<tr>
 											<td class="prod-img"><img class="img-project" src="<?php echo $path;?>"></td>
 											<td class="prod-spec-name"><?php echo $name;?></td>
-											<td class="prod-spec-description"><?php echo utf8_encode($descr);?></td>
+											<td class="prod-spec-description">
+												<div class="long-text"><?php echo utf8_encode($descr);?></div>
+											</td>
 											<td class="prod-spec-power" nowrap><?php echo $pow ;?> W</td>
 											<td class="prod-spec-cost" nowrap>€ <?php echo $cost ;?></td>
 											<td class="prod-spec-link" nowrap>

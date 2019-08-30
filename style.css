@@ -44,10 +44,7 @@
 }
 /**********TABLE****************/
 .tab_input {
-  background-image: url('/css/searchicon.png');
-  background-position: 10px 10px;
-  background-repeat: no-repeat;
-  width: 100%;
+  max-width: 400px;
   font-size: 16px;
   padding: 12px 20px 12px 40px;
   border: 1px solid #ddd;
@@ -78,6 +75,18 @@ table{
 #products-table tr.header, #products-table tr:hover {
   background-color: #f1f1f1;
 }
+
+.long-text{
+  overflow: auto; 
+  max-height: 100px;
+}
+
+.long-link{
+  
+  max-width: 200px;
+  word-wrap: break-word; 
+}
+
 
 /**********TABLE****************/
 
