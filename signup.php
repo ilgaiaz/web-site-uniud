@@ -35,7 +35,7 @@
         <!-- End Navbar -->
         <?php
             session_start();
-            if(isset($_POST["username"], $_POST["password"], $_POST["name"], $_POST["surname"], $_POST["email"]) ) {             
+            if(isset($_POST["username"], $_POST["password"],$_POST["date"], $_POST["name"], $_POST["surname"], $_POST["email"]) ) {             
                 require_once('config/mysql.php');
                 $query = "SELECT * FROM user_data WHERE email='".$_POST["email"]."';";
                 $result = mysqli_query($conn,$query);
@@ -59,7 +59,6 @@
                             <?php
                         } else {
                             require_once("services/insert.php");
-                            header("Location: signup_success.html");
                         }
                     } else {
                         ?>
@@ -117,7 +116,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm">Data di nascita</label>
                             <div class="col-sm">
-                                <input type="date" class="form-control" id="dateofbirth" name="date">
+                                <input type="date" class="form-control" id="dateofbirth" name="date" required>
                             </div>
                         </div>
                         <!-- Campo email -->
