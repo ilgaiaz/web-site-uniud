@@ -149,6 +149,9 @@
                      </div>
                   </div>
                </form>
+               <form id="form-delete" class="form-horizontal" action="delete_page.php" method="POST">
+                  <br><input id="submit-del" type="submit" class="btn btn-primary" name="del-data" value="Elimina account">
+               </form>
             </div>
          </div>
       </div>
