@@ -37,7 +37,7 @@
                 <!--<div class="container">
                     Add some description
                 </div> -->
-                <input type="text" id="myInput" onkeyup="search('myInput','products-table',1)" placeholder="Cerca per nome componente.." title="Type in a name">
+                <input type="text" id="myInput" class="tab_input" onkeyup="search('myInput','products-table',1)" placeholder="Cerca componente.." title="Type in a name">
                 <div class="table-responsive">
                     <table id="products-table" class="table table-hover">
                         <?php
@@ -51,7 +51,7 @@
                             $i = 0;
                             require_once("config/mysql.php");
                             $query = "SELECT products.path, products.product_name,specs.description,specs.absorbed_power, specs.id,products.price 
-                            FROM products JOIN specs ON products.id=specs.id";
+                            FROM products JOIN specs ON products.id=specs.id ORDER BY products.product_name ASC";
                             $result = mysqli_query($conn,$query);
                         
                             if($result->num_rows){
@@ -85,12 +85,16 @@
 
                                     ?>
                                         <tr>
-                                        <td class="prod-img-<?php echo $ind[$i];?>"><img value="prod-spec-<?php echo $ind[$i];?>" class="img-project" src="<?php echo $path[$i];?>" onclick=toggleInfo(this)></td>
+                                        <td class="prod-img-<?php echo $ind[$i];?>"><img value="prod-spec-<?php echo $ind[$i];?>" 
+                                        class="img-project" src="<?php echo $path[$i];?>" onclick=toggleInfo(this)></td>
                                         <td class="prod-name"><?php echo $name[$i] ;?></td>
-                                            <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none"><?php echo $descr[$i] ;?></td>
+                                            <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none"> 
+                                                <div class="long-text"> <?php echo utf8_encode($descr[$i]) ;?> </div>
+                                            </td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap><?php echo $pow[$i] ;?> W</td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap>€ <?php echo $cost[$i] ;?></td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap>
+                                                <div class="long-text">
                                             <?php 
                                                 if($result2->num_rows){
 													$j = 1;
@@ -101,6 +105,7 @@
 													}
                                                 }
                                             ?>
+                                                </div>
                                             </td>
                                         
                                         </tr>
