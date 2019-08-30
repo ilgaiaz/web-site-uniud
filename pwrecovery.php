@@ -2,7 +2,7 @@
 <html>
    <head>
       <meta charset="utf-8">
-      <title>PW Recovery page</title>
+      <title>PW Recovery</title>
       <meta name="description" content="Login to your profile"/>
       <meta name="author" content="Michele Gaiarin"/>
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">

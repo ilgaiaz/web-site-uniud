@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>Login Page</title>
+        <title>Login</title>
         <meta name="description" content="Login to your profile"/>
         <meta name="author" content="Michele Gaiarin"/>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
