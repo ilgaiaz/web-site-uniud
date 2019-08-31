@@ -16,32 +16,6 @@
   left: 0px;
 }
 
-/*Login form */
-.form-container input[type=text], input[type=password], input[type=date], input[type=email]{
-  max-width: 400px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.form-container input[type=submit]{
-  max-width: 400px;
-  margin-right: auto;
-  margin-left: auto;
-}
-
-.form-container{
-  align-content: center;
-  align-items: center;
-  text-align: center;
-  max-width: 400px;
-  margin: 7% auto;
-  float: none;
-  
-}
-
-.error-warning p{
-  color: #b22222;
-}
 /**********TABLE****************/
 .tab_input {
   max-width: 400px;
@@ -88,7 +62,35 @@ table{
 }
 
 
-/**********TABLE****************/
+/**********END TABLE****************/
+
+
+/*********Form container************/
+.form-container input[type=text], input[type=password], input[type=date], input[type=email]{
+  max-width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.form-container input[type=submit]{
+  max-width: 400px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.form-container{
+  align-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 400px;
+  margin: 7% auto;
+  float: none;
+  
+}
+
+.error-warning p{
+  color: #b22222;
+}
 
 .form-control{
   align-content: left;
@@ -97,7 +99,7 @@ table{
   -moz-box-align: left;
 }
 
-#container-signin .alert{
+#container-signup .alert{
   opacity: 1;
   transition: opacity 0.3s; 
   max-width: 40%;
@@ -113,6 +115,9 @@ table{
   margin-right: auto;
 }
 
+/************END FORM****************/
+
+/*********PROFILE PAGE***************/
 #mod-info .alert{
   opacity: 1;
   transition: opacity 0.3s; 
@@ -129,6 +134,9 @@ table{
   margin-right: auto;
 }
 
+/*************END PROFILE*************/
+
+/**************PROJECT PAGE***********/
 
 #project-container{
 	margin-top: 30px;
