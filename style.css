@@ -144,7 +144,7 @@ table{
 }
 
 
-img:hover{
+img.img-project:hover{
 	cursor: pointer;
 }
 
