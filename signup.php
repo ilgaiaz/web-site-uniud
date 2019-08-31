@@ -41,7 +41,7 @@
                 $result = mysqli_query($conn,$query);
                 //if there is already that username show error message otherside save data
                 if (!$result->num_rows >= 1) {
-                    $query = "SELECT * FROM user_data WHERE user='".$_POST["user"]."';";
+                    $query = "SELECT * FROM user_data WHERE user='".$_POST["username"]."';";
                     $result = mysqli_query($conn,$query);
                     //if there is already that username show error message otherside save data
                     if (!$result->num_rows >= 1) {
@@ -52,8 +52,8 @@
                             ?>
                                 <script>
                                     $(document).ready(function(){
-                                        showDiv("#signin-error");
-                                        errorMessage("#signin-error", "<strong>Errore: </strong>Email non valida");
+                                        showDiv("#signup-error");
+                                        errorMessage("#signup-error", "<strong>Errore: </strong>Email non valida");
                                     });
                                 </script>
                             <?php
@@ -64,8 +64,8 @@
                         ?>
                             <script>
                                 $(document).ready(function(){
-                                    showDiv("#signin-error");
-                                    errorMessage("#signin-error", "<strong>Errore: </strong>Username già presente");
+                                    showDiv("#signup-error");
+                                    errorMessage("#signup-error", "<strong>Errore: </strong>Username già presente");
                                 });
                             </script>
                         <?php
@@ -75,8 +75,8 @@
                 ?>
                     <script>
                         $(document).ready(function(){
-                            showDiv("#signin-error");
-                            errorMessage("#signin-error", "<strong>Errore: </strong>Email già presente");
+                            showDiv("#signup-error");
+                            errorMessage("#signup-error", "<strong>Errore: </strong>Email già presente");
                         });
                     </script>
                 <?php 
@@ -85,14 +85,14 @@
         ?>
         <div class="container">
 	        <div class="jumbotron">
-                <div id="container-signin" class="form-container container">
+                <div id="container-signup" class="form-container container">
                     <div class="col-sm">
                         <h2>Registrazione</h2>
                     </div>
                     <!-- Error message if data is wrong -->
-                    <div id="signin-error" class="alert alert-danger" style="display: none"></div>
+                    <div id="signup-error" class="alert alert-danger" style="display: none"></div>
                     <!-- ******** -->
-                    <form id="form-signin" class="form-horizontal was-validated" action="signup.php" method="POST" 
+                    <form id="form-signup" class="form-horizontal was-validated" action="signup.php" method="POST" 
                         oninput='confirm_password.setCustomValidity(confirm_password.value != password.value ? "La password non combacia" : "")'>
                         <!-- Campo nome -->
                         <div class="form-group">
@@ -157,7 +157,7 @@
                         </div>
                         <div class="form-group">        
                             <div class="col-sm-offset-2 col-sm">
-                                <input id="submit-signin" type="submit" class="btn btn-primary" name="sub-data" value="Registrati">
+                                <input id="submit-signup" type="submit" class="btn btn-primary" name="sub-data" value="Registrati">
                             </div>
                         </div>
                     </form>
