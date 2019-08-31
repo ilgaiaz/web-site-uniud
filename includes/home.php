@@ -3,7 +3,7 @@
 	<div class="jumbotron">
 		<div class="row">
 			<div class="col-md-3"> 
-				<img class="imm mx-auto d-block" src="images/logo.svg" alt="logo" height="150px">	
+				<img class="img-responsive" src="images/logo.svg" alt="logo">	
 			</div>
 			<div class="col-md-9"> 
 				<h2>Università degli Studi di Udine</h2>
@@ -21,8 +21,10 @@
 	<div class="row ">		
 		<div class="col-md-4 col-sm-6">
 			<div class="card mx-auto d-block">
-			  <img class="card-img-top" src="images/mattia.png" alt="profilo_mattia">
-			  <div class="card-body">
+				<div class="home-img">
+			  		<img class="card-img-top" src="images/mattia.png" alt="profilo_mattia">
+				</div>
+			  	<div class="card-body">
 				<h4 class="card-title">Mattia Segatto</h4>
 				<p class="card-text">
 				  <dl>
@@ -38,8 +40,10 @@
 		
 		<div class="col-md-4 col-sm-6">
 			<div class="card mx-auto d-block">
-			  <img class="card-img-top" src="images/andrea.jpg" alt="profilo_andrea">
-			  <div class="card-body">
+				<div class="home-img">
+			 		<img class="card-img-top" src="images/andrea.jpg" alt="profilo_andrea">
+				</div>
+			 	<div class="card-body">
 				<h4 class="card-title">Andrea Mocchi</h4>
 				<p class="card-text">
 				  <dl>
@@ -55,13 +59,15 @@
 		
 		<div class="col-md-4">
 			<div class="card  mx-auto">
-			  <img class="card-img-top" src="images/michele.png" alt="profilo_michele">
-			  <div class="card-body">
+				<div class="home-img">
+			  		<img class="card-img-top" src="images/michele.png" alt="profilo_michele">
+				</div>
+				<div class="card-body">
 				<h4 class="card-title">Michele Gaiarin</h4>
 				<p class="card-text">
 				  <dl>
 				  	<dt>Matricola</dt>
-					<dd>inserire</dd>
+					<dd>116651</dd>
 					<dt>email</dt>
 					<dd>gaiarin.michele@spes.uniud.it</dd>
 				  </dl>     

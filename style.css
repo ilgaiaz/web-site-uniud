@@ -15,6 +15,18 @@
   right: auto !important;
   left: 0px;
 }
+/**********HOME IMG************/
+
+.img-responsive {
+  max-width: 80%;
+  height: auto;
+}
+
+.card-img-top {
+  width: 100%;
+  min-height: 25vw;
+  object-fit: cover;
+}
 
 /**********TABLE****************/
 .tab_input {
