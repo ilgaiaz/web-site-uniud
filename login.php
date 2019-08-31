@@ -29,7 +29,7 @@
         </div>
         <script>
             $(function(){
-                $("#nav-placeholder").load("includes/navbar.php");
+                $("#nav-placeholder").load("includes/navbar.php", {navID: "nav-login"});
             });
         </script>
         <!-- End Navbar -->

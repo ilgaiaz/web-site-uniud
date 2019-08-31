@@ -31,7 +31,7 @@
       <div class="container" id="nav-placeholder">
          <script>
             $(function(){
-               $("#nav-placeholder").load("includes/navbar.php");
+               $("#nav-placeholder").load("includes/navbar.php", {navID: "nav-login"});
             });
          </script>
       </div>

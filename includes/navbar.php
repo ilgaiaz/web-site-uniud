@@ -1,3 +1,11 @@
+<script>  
+  /*Function for update nav active*/
+  var el = document.getElementById("<?php echo $_POST["navID"]; ?>")
+  if(el !== null){
+    //document.getElementById("nav-home").classList.remove('active');
+    el.classList.add('active');
+  }
+</script>
 
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
 	  
@@ -12,13 +20,13 @@
             <img id="logo" src="../images/logo.png" alt="logo">
     	</a>-->
 		<ul class="navbar-nav">
-			<li class="nav-item active">
+			<li id="nav-home" class="nav-item">
 			  <a class="nav-link" href="index.php">Home</a>
 			</li>
-			<li class="nav-item">
-			  <a class="nav-link" href="projects.php">Componenti</a>
+			<li id="nav-component" class="nav-item">
+			  <a  class="nav-link" href="projects.php">Componenti</a>
 			</li>
-			<li class="nav-item">
+			<li id="nav-software" class="nav-item">
 			  <a class="nav-link" href="software.php">Software</a>
 			</li>
 		</ul>
@@ -32,7 +40,7 @@
                 //$query='SELECT * FROM user_data';
                 //$result = $conn->query($query);
         ?>
-                <li class="nav-item">
+                <li id="nav-user" class="nav-item">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
         <?php
                 //--Print user name --
@@ -48,10 +56,10 @@
                 </li>
         <?php } else { ?>
                 <!-- If the the login is't done show signin and login link -->
-                <li class="nav-item"> 
+                <li id="nav-signup" class="nav-item"> 
                     <a id="sign-in" class="nav-link" href="signup.php">Registrati</a>
                 </li>
-                <li class="nav-item"> 
+                <li id="nav-login" class="nav-item"> 
                     <a id="login" class="nav-link" href="login.php">Login</a>
                 </li>
         <?php } ?>

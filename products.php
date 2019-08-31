@@ -24,11 +24,11 @@
 
     <body>
         <div class="container" id="nav-placeholder">
-             <script>
-                $(function(){
-                    $("#nav-placeholder").load("includes/navbar.php");
-                });
-            </script>
+		<script>
+            $(function(){
+                $("#nav-placeholder").load("includes/navbar.php", {navID: "nav-user"});
+            });
+        </script>
         </div>
         <div id="container-mod-data" class="container">
             <div class="jumbotron">
