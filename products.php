@@ -71,11 +71,8 @@
 										$ind = $row['id'];
 										$path = $row['path'];
 										$name = $row['product_name'];
-										//echo $row['nome_prodotto'];
 										$descr = $row['description'];
-										//echo $row['descrizione'];
 										$pow = $row['absorbed_power'];
-										//echo $row['potenza_assorbita'];
 										$cost = $row['price'];
 										
 										$query2 = "SELECT link FROM `link_esempi` WHERE ID = '".$ind."'";

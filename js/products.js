@@ -54,13 +54,15 @@ function updateResult(class_selector){
     $("#p_tot").text(sum_p + " W");
     $("#c_tot").text("€" + sum_c.toFixed(2));   
 };
-            
+
+//Retrieve value from image (image's value is the class name of that table row )
 function toggleInfo(el){
     $("#stored-data").hide();
     //Get the class value to show when the image is clicked
     var showPar = "." + el.getAttribute("value");
     $(showPar).toggle();
     $(el).toggleClass("selected");
+    //pass the row's class
     updateResult(el.getAttribute("value"));
 };
 
@@ -80,6 +82,7 @@ function getCookie(cname) {
 }
 
 function storeData(){
+    //If user is logged in show the save button
     if (getCookie("session_destroyed") == "true" ){
         $("#save-error").show();
     }

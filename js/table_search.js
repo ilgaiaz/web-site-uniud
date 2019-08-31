@@ -1,3 +1,4 @@
+//Search into a table and filter row
 function search(input,table, column) {
   var input, filter, table, tr, td, i, txtValue;
   input = document.getElementById(input);

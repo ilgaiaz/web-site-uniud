@@ -36,6 +36,7 @@
       <?php
          session_start();
          require_once('config/mysql.php');
+         //retrieve info from the link stored in the link and check email and key
          if (isset($_GET["key"]) && isset($_GET["email"]) && isset($_GET["action"]) 
          && ($_GET["action"]=="reset") && !isset($_POST["action"])) { 
             $key = $_GET["key"];
@@ -44,6 +45,7 @@
             $sql = "SELECT * FROM `password_reset_temp` WHERE `key`='".$key."' and `email`='".$email."';";
             $query = mysqli_query($conn, $sql);
             $row = mysqli_num_rows($query);
+            //read value from db and check key and expiration date
             if ($row==""){
                $error .= '<h2>Link non valido</h2>
                <p>Il link utilizzato non è valido o è scaduto</p>';
@@ -109,6 +111,7 @@
             </div>
       <?php
          } else {
+            //If everything is ok update the password
             if(isset($_POST["email"]) && isset($_POST["action"]) && ($_POST["action"]=="update")){
                $pass = password_hash($_POST["password"], PASSWORD_ARGON2I);
                $query = "UPDATE user_data SET PASSWORD = '".$pass."'WHERE email ='".$_POST["email"]."';";

@@ -35,6 +35,7 @@
       </div>
       <!-- End Navbar -->
       <?php
+         //Get data from post and update the pw
          session_start();
          if(isset($_POST["password"]) && isset($_POST["confirm_password"]) && (!empty($_POST["reset"]))){
             require_once('config/mysql.php');

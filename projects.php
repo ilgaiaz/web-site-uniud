@@ -85,6 +85,7 @@
 
                                     ?>
                                         <tr>
+                                        <!--Add info and foreach row use the id value for rename the class so it can be easily managed-->
                                         <td class="prod-img-<?php echo $ind[$i];?>"><img value="prod-spec-<?php echo $ind[$i];?>" 
                                         class="img-project" src="<?php echo $path[$i];?>" onclick=toggleInfo(this)></td>
                                         <td class="prod-name"><?php echo $name[$i] ;?></td>
@@ -95,7 +96,8 @@
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap>€ <?php echo $cost[$i] ;?></td>
                                             <td class="prod-spec-<?php echo $ind[$i];?>" style="display: none" nowrap>
                                                 <div class="long-text">
-                                            <?php 
+                                            <?php
+                                                //Insert all the link stored in the link_esempi db 
                                                 if($result2->num_rows){
 													$j = 1;
 													while($row2 = mysqli_fetch_assoc($result2)){			

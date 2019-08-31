@@ -1,3 +1,4 @@
+<!--Extrat user data value and show into a table -->
 <div class="table-responsive">
     <table class="table table-striped table-hover">
         <?php

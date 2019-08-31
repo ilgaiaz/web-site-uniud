@@ -2,7 +2,6 @@
   /*Function for update nav active*/
   var el = document.getElementById("<?php echo $_POST["navID"]; ?>")
   if(el !== null){
-    //document.getElementById("nav-home").classList.remove('active');
     el.classList.add('active');
   }
 </script>
@@ -36,9 +35,6 @@
             session_start();
             //Check login. If is done show username in navbar
             if(isset($_SESSION['username'])){
-                //require_once('config/mysql.php');
-                //$query='SELECT * FROM user_data';
-                //$result = $conn->query($query);
         ?>
                 <li id="nav-user" class="nav-item">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">

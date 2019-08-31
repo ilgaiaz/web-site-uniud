@@ -92,7 +92,6 @@
                   });
                </script>
                <?php
-               //header("Location: profile.php");
             }
          }
       ?>
@@ -105,7 +104,8 @@
                <div id="mod-success" class="alert alert-success" style="display: none"></div>
                <?php
                   require_once('services/get.php');
-               ?>   
+               ?>
+               <!--If clicked show modificable table and hide this -->   
                <div class="form-group">      
                   <button id="submit-mod-data" class="btn btn-primary">Modifica dati</button>
                </div>  

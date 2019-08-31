@@ -41,6 +41,7 @@
          require 'vendor/autoload.php';
          session_start();
          require_once('config/mysql.php');
+         //Check if the mail is stored in user_data table 
          if(isset($_POST["email"]) && (!empty($_POST["email"]))){
             $email = $_POST["email"];
             $email = filter_var($email, FILTER_SANITIZE_EMAIL);
@@ -75,10 +76,12 @@
                </div>
             <?php
             }else{
+               //If the email is valid :
                $expFormat = mktime(
                date("H"), date("i"), date("s"), date("m") ,date("d")+1, date("Y"));
 
-               /*Create the  email's message and save into db*/
+               /*Create the  email's message and save into db
+               set variable (key and expiration date) to insert into the link and db (Check this info when the link is open)*/
                $expDate = date("Y-m-d H:i:s",$expFormat);
                $key = md5(2418*2+$email);
                $addKey = substr(md5(uniqid(rand(),1)),3,10);
@@ -86,7 +89,7 @@
                // Insert Temp Table
                mysqli_query($conn, "INSERT INTO `password_reset_temp` (`email`, `key`, `expDate`)
                VALUES ('".$email."', '".$key."', '".$expDate."');");
-               
+               //Create the message's body with user datas inside
                $output='<p>Caro/a '.$name.',</p>';
                $output.='<p>Per favore premi il link sottostante per modificare la tua password</p>';
                $output.='<p>Login username: '.$user.'</p>';
@@ -111,13 +114,13 @@
                $content = new SendGrid\Content("text/html", $output);
                $mail = new SendGrid\Mail($from, $subject, $to, $content);
                
+               //Send email and show alert success
                $apiKey = getenv('SENDGRID_API_KEY');
                $sg = new \SendGrid($apiKey);
                try {
                   $response = $sg->client->mail()->send()->post($mail);
-                  /*echo $response->statusCode();
-                  echo $response->body();
-                  echo $response->headers();*/
+               } catch (Exception $e) {
+                  echo 'Caught exception: ',  $e->getMessage(), "\n";
                } finally {
             ?>
                   <div id="container-resetpw" class=" container">

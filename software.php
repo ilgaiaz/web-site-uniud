@@ -40,8 +40,9 @@
 					<div class="table-responsive">
 						<table id="products-table" class="table table-hover">				
 							<?php				
-								//header('Content-type: text/plain; charset=utf-8');
 								require_once("config/mysql.php");
+								//Create a query who get info from product and software and group the component who use the same sw
+								//Then order everything by sw name
 								$query = "SELECT GROUP_CONCAT(products.product_name), software.name, software.description, software.link 
 								FROM products JOIN hw_sw ON hw_sw.hwID = products.id JOIN software ON hw_sw.swID = software.softwareID
 								GROUP BY software.name ORDER BY software.name ASC";

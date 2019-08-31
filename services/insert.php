@@ -8,7 +8,6 @@
         header("Location: signup_success.html");
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
-        //header("Location: signin.php")
     }
     
 ?>
