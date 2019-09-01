@@ -23,6 +23,12 @@
    	</head>
 
     <body>
+		<script>
+			//If user use turn back button after logout redirect to login page
+			if(!(getCookie("session_destroyed") != "true" && getCookie("username") != "")){
+				window.location.href = "private_page_alert.html";
+			}
+		</script>
         <div class="container" id="nav-placeholder">
 		<script>
             $(function(){

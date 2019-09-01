@@ -24,7 +24,13 @@
       <script type="text/javascript" src="js/script.js?v=2"></script>
       <script type="text/javascript" src="js/cookie.js?v=2"></script>
    </head>
-   <body> 
+   <body>
+      <script>
+         //If user use turn back button after logout redirect to login page
+			if(!(getCookie("session_destroyed") != "true" && getCookie("username") != "")){
+				window.location.href = "private_page_alert.html";
+			}
+		</script> 
       <!--Navbar show -->
       <div class="container" id="nav-placeholder">
          <script>
