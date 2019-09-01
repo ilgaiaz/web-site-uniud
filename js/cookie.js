@@ -41,6 +41,16 @@ function checkCookie() {
     }
 };
 
+function showStoreButton(){
+    if(getCookie("session_destroyed") != "true" && getCookie("username") != ""){
+        $("#submit-save-product").show();
+    } else {
+        $("#submit-save-product").hide();
+    }
+}
+
 $(window).on("load", function(){
     checkCookie();
+    /**Use cookie for show the store button in projects.php */
+    showStoreButton();
 });

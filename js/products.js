@@ -81,18 +81,8 @@ function getCookie(cname) {
     return "";
 }
 
-function storeData(){
-    //If user is logged in show the save button
-    if (getCookie("session_destroyed") == "true" ){
-        $("#save-error").show();
-    }
-};
-
 //If a user is logged in show the save button
 $(document).ready(function(){
-    if(getCookie("session_destroyed") != "true" ){
-        $("#submit-save-product").show();
-    };
     $("#submit-save-product").on("click", function(){
         if(idArray.length == 0){
             $("#stored-data").html('<div class="alert alert-danger"><strong>Errore!</strong> Inserire almeno un componente</div>');
