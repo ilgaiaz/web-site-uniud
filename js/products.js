@@ -96,7 +96,8 @@ $(document).ready(function(){
                 success: function() { 
                     console.log("Success");
                     console.log(myJSONText);
-                    $("#stored-data").html('<div class="alert alert-success"><strong>Successo!</strong> Dati inseriti correttamente</div>');
+                    var message = "Puoi trovare la tua ultima ricerca nella sezione \"componenti\" dell'area privata.";
+                    $("#stored-data").html('<div class="alert alert-success"><strong>Successo!</strong> '+ message +'</div>');
                     $("#stored-data").show();
                 } 
             }); 
