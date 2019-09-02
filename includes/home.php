@@ -29,7 +29,7 @@
 				<p class="card-text">
 				  <dl>
 					<dt>Matricola</dt>
-					<dd>inserire</dd>
+					<dd>119913</dd>
 					<dt>email</dt>
 					<dd>segatto.mattia@spes.uniud.it</dd>
 				  </dl>     
